@@ -1,0 +1,172 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-date" data-rule="required" class="form-control" name="row[date]" type="text" value="{$row.date|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agent_id" data-rule="required" data-source="agent/index" class="form-control selectpage" name="row[agent_id]" type="text" value="{$row.agent_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('First_recharge_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-first_recharge_num" data-rule="required" class="form-control" name="row[first_recharge_num]" type="number" value="{$row.first_recharge_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('First_recharge_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-first_recharge_amount" data-rule="required" class="form-control" step="0.01" name="row[first_recharge_amount]" type="number" value="{$row.first_recharge_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Recharge_num_less_than')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-recharge_num_less_than" data-rule="required" class="form-control" name="row[recharge_num_less_than]" type="number" value="{$row.recharge_num_less_than|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Recharge_num_amount_less_than')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-recharge_num_amount_less_than" data-rule="required" class="form-control" step="0.01" name="row[recharge_num_amount_less_than]" type="number" value="{$row.recharge_num_amount_less_than|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('First_withdraw_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-first_withdraw_num" data-rule="required" class="form-control" name="row[first_withdraw_num]" type="number" value="{$row.first_withdraw_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('First_withdraw_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-first_withdraw_amount" data-rule="required" class="form-control" step="0.01" name="row[first_withdraw_amount]" type="number" value="{$row.first_withdraw_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Withdraw_num_less_than')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-withdraw_num_less_than" data-rule="required" class="form-control" name="row[withdraw_num_less_than]" type="number" value="{$row.withdraw_num_less_than|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Withdraw_num_amount_less_than')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-withdraw_num_amount_less_than" data-rule="required" class="form-control" step="0.01" name="row[withdraw_num_amount_less_than]" type="number" value="{$row.withdraw_num_amount_less_than|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level_up_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_up_num" data-rule="required" class="form-control" name="row[level_up_num]" type="number" value="{$row.level_up_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level_up_recharge_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_up_recharge_amount" data-rule="required" class="form-control" step="0.01" name="row[level_up_recharge_amount]" type="number" value="{$row.level_up_recharge_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level_down_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_down_num" data-rule="required" class="form-control" name="row[level_down_num]" type="number" value="{$row.level_down_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level_down_withdraw_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_down_withdraw_amount" data-rule="required" class="form-control" step="0.01" name="row[level_down_withdraw_amount]" type="number" value="{$row.level_down_withdraw_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order_award_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-order_award_amount" data-rule="required" class="form-control" step="0.01" name="row[order_award_amount]" type="number" value="{$row.order_award_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level_1_commission')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_1_commission" data-rule="required" class="form-control" step="0.01" name="row[level_1_commission]" type="number" value="{$row.level_1_commission|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level_2_commission')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_2_commission" data-rule="required" class="form-control" step="0.01" name="row[level_2_commission]" type="number" value="{$row.level_2_commission|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level_3_commission')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_3_commission" data-rule="required" class="form-control" step="0.01" name="row[level_3_commission]" type="number" value="{$row.level_3_commission|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-order_num" data-rule="required" class="form-control" name="row[order_num]" type="number" value="{$row.order_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-order_amount" data-rule="required" class="form-control" step="0.01" name="row[order_amount]" type="number" value="{$row.order_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Register_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-register_num" data-rule="required" class="form-control" name="row[register_num]" type="number" value="{$row.register_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Recharge_user_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-recharge_user_num" data-rule="required" class="form-control" name="row[recharge_user_num]" type="number" value="{$row.recharge_user_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Recharge_order_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-recharge_order_num" data-rule="required" class="form-control" name="row[recharge_order_num]" type="number" value="{$row.recharge_order_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Recharge_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-recharge_amount" data-rule="required" class="form-control" step="0.01" name="row[recharge_amount]" type="number" value="{$row.recharge_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Withdraw_user_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-withdraw_user_num" data-rule="required" class="form-control" name="row[withdraw_user_num]" type="number" value="{$row.withdraw_user_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Withdraw_order_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-withdraw_order_num" data-rule="required" class="form-control" name="row[withdraw_order_num]" type="number" value="{$row.withdraw_order_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Withdraw_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-withdraw_amount" data-rule="required" class="form-control" step="0.01" name="row[withdraw_amount]" type="number" value="{$row.withdraw_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

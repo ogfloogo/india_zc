@@ -1,0 +1,112 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-date" data-rule="required" class="form-control" name="row[date]" type="text" value="{$row.date|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('User_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-user_id" data-rule="required" data-source="user/user/index" data-field="nickname" class="form-control selectpage" name="row[user_id]" type="text" value="{$row.user_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Mobile')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-mobile" class="form-control" name="row[mobile]" type="text" value="{$row.mobile|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-money" data-rule="required" class="form-control" step="0.01" name="row[money]" type="number" value="{$row.money|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cal')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cal" data-rule="required" class="form-control" step="0.01" name="row[cal]" type="number" value="{$row.cal|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Diff')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-diff" data-rule="required" class="form-control" step="0.01" name="row[diff]" type="number" value="{$row.diff|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Admin_inc')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-admin_inc" class="form-control" step="0.01" name="row[admin_inc]" type="number" value="{$row.admin_inc|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Admin_dec')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-admin_dec" class="form-control" step="0.01" name="row[admin_dec]" type="number" value="{$row.admin_dec|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Group')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-group" class="form-control" step="0.01" name="row[group]" type="number" value="{$row.group|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Head')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-head" class="form-control" step="0.01" name="row[head]" type="number" value="{$row.head|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Commission')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-commission" class="form-control" step="0.01" name="row[commission]" type="number" value="{$row.commission|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Invite')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-invite" class="form-control" step="0.01" name="row[invite]" type="number" value="{$row.invite|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('New_login')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-new_login" class="form-control" step="0.01" name="row[new_login]" type="number" value="{$row.new_login|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Withdraw_waiting')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-withdraw_waiting" class="form-control" step="0.01" name="row[withdraw_waiting]" type="number" value="{$row.withdraw_waiting|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Withdraw')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-withdraw" class="form-control" step="0.01" name="row[withdraw]" type="number" value="{$row.withdraw|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Recharge')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-recharge" class="form-control" step="0.01" name="row[recharge]" type="number" value="{$row.recharge|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Diff_log_ids')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-diff_log_ids" data-rule="required" data-source="diff/log/index" data-multiple="true" class="form-control selectpage" name="row[diff_log_ids]" type="text" value="{$row.diff_log_ids|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,70 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-date" data-rule="required" class="form-control" name="row[date]" type="text" value="{$row.date|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('User')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-user" data-rule="required" class="form-control" name="row[user]" type="number" value="{$row.user|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rechargeuser')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rechargeuser" data-rule="required" class="form-control" name="row[rechargeuser]" type="number" value="{$row.rechargeuser|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-order" data-rule="required" class="form-control" name="row[order]" type="number" value="{$row.order|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ordermoney')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ordermoney" data-rule="required" class="form-control" step="0.01" name="row[ordermoney]" type="number" value="{$row.ordermoney|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rewardmoney')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rewardmoney" data-rule="required" class="form-control" step="0.01" name="row[rewardmoney]" type="number" value="{$row.rewardmoney|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rechargeorder')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rechargeorder" data-rule="required" class="form-control" name="row[rechargeorder]" type="number" value="{$row.rechargeorder|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Recharge')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-recharge" data-rule="required" class="form-control" step="0.01" name="row[recharge]" type="number" value="{$row.recharge|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cash')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cash" data-rule="required" class="form-control" step="0.01" name="row[cash]" type="number" value="{$row.cash|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Send')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-send" data-rule="required" class="form-control" step="0.01" name="row[send]" type="number" value="{$row.send|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

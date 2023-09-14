@@ -1,0 +1,107 @@
+<style>
+    .profile-avatar-container {
+        position: relative;
+        width: 100px;
+        margin: 0 auto;
+    }
+
+    .profile-avatar-container .profile-user-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-avatar-container .profile-avatar-text {
+        display: none;
+    }
+
+    .profile-avatar-container:hover .profile-avatar-text {
+        display: block;
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        background: #444;
+        opacity: .6;
+        color: #fff;
+        top: 0;
+        left: 0;
+        line-height: 100px;
+        text-align: center;
+    }
+
+    .profile-avatar-container button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+</style>
+<div class="row animated fadeInRight">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="panel-heading">
+                {:__('客服设置')}
+            </div>
+            <div class="panel-body">
+
+                <form id="update-form" role="form" data-toggle="validator" method="POST"
+                    action="{:url('agent.agent_info/update')}">
+                    {:token()}
+
+                    <div class="box-body box-profile">
+                        <div class="form-group">
+                            <label for="windows" class="control-label">{:__('Windows')}:</label>
+
+                            <table class="table table-responsive fieldlist" data-name="row[windows]"
+                                data-template="testtpl" data-tag="tr">
+                                <tr>
+                                    <td>image</td>
+                                    <td>url</td>                                    
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i
+                                                class="fa fa-plus"></i> 追加</a></td>
+                                </tr>
+                                <textarea name="row[windows]" class="form-control hide" cols="30"
+                                    rows="5">{$row['windows']}</textarea>
+                            </table>
+                            <!--定义模板，模板语法使用Art-Template模板语法-->
+                            <script type="text/html" id="testtpl">
+                            <tr class="form-inline">
+                                <td>
+                                    <div class="input-group">
+                                        <input id="c-image<%=index%>" class="form-control" size="50" name="row[<%=name%>][<%=index%>][image]" type="text" value="<%=row['image']%>">
+                                        <div class="input-group-addon no-border no-padding">
+                                            <span><button type="button" id="faupload-image" class="btn btn-danger faupload" data-input-id="c-image<%=index%>" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-image<%=index%>"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+<!--                                                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-input-id="c-image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>-->
+                                        </div>
+                                        <span class="msg-box n-right" for="c-image<%=index%>"></span>
+                                    </div>
+                                    <ul class="row list-inline faupload-preview" id="p-image<%=index%>"></ul>
+                                </td>
+                                <!-- <td><input type="text" name="row[<%=name%>][<%=index%>][image]" class="form-control" value="<%=row['image']%>" size="10"></td>  -->
+                                <td><input type="text" name="row[<%=name%>][<%=index%>][url]" class="form-control" value="<%=row['url']%>" size="50"></td>                                 
+                                <td><span class="btn btn-sm btn-danger btn-remove"><i class="fa fa-times"></i></span> <span class="btn btn-sm btn-primary btn-dragsort"><i class="fa fa-arrows"></i></span></td>
+                            </tr>
+                        </script>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service_url" class="control-label">{:__('Service_url')}:</label>
+                            <input type="text" class="form-control" id="service_url" name="row[service_url]"
+                                value="{$row.service_url|htmlentities}" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">{:__('Submit')}</button>
+                            <button type="reset" class="btn btn-default">{:__('Reset')}</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>

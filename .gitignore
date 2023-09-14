@@ -1,0 +1,20 @@
+/nbproject/
+/runtime/*
+/application/admin/command/Install/*.lock
+/public/uploads/*
+.idea
+composer.lock
+*.log
+*.css.map
+!.gitkeep
+.env
+.svn
+.vscode
+node_modules
+.DS_Store
+/public/.DS_Store
+# /vendor/*
+/application/database.php
+/application/extra/site.php
+.htaccess
+/thinkphp/library/think/cache/driver/Redis.php

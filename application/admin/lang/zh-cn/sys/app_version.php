@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'System'              => '系统',
+    'System 1'            => '安卓',
+    'System 2'            => 'ios',
+    'Channel'             => '渠道',
+    'Channel 0'           => '未知',
+    'Channel 1'           => '通用渠道',
+    'Number'              => '版本号',
+    'Update_type'         => '升级类型',
+    'Update_type 1'       => '提示',
+    'Update_type 2'       => '强制',
+    'Download_type_and'   => '安卓下载类型',
+    'Download_type_and 1' => '本地',
+    'Download_type_and 2' => '外链',
+    'Update_url_and_file' => '安卓文件',
+    'Download_type_ios'   => 'ios下载类型',
+    'Download_type_ios 1' => '本地',
+    'Download_type_ios 2' => '外链',
+    'Update_url_ios_file' => 'ios文件',
+    'Download_type_wgt'   => 'wgt下载类型',
+    'Download_type_wgt 1' => '本地',
+    'Download_type_wgt 2' => '外链',
+    'Update_url_wgt_file' => 'wgt文件',
+    'Content'             => '更新说明',
+    'Status'              => '状态',
+    'Status 0'            => '关闭',
+    'Status 1'            => '开启'
+];

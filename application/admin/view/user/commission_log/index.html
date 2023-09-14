@@ -1,0 +1,68 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{:__('基础信息')}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>团队总人数:{$row.group_invite_number}</td>
+            <td>一级成员人数:{$row.level_1_number}</td>
+            <td>二级成员人数:{$row.level_2_number}</td>
+        </tr>
+        <tr>
+            <td>三级成员人数:{$row.level_3_number}</td>
+            <td>累计获得佣金:{$row.total_commission}</td>
+            <td>今日获得佣金:{$row.today_commission}</td>
+        </tr>
+        <tr>
+            <td>当前团队等级:{$row.level}</td>
+            <td>一级佣金比例:{$row.level_1_rate}</td>
+            <td>二级佣金比例:{$row.level_2_rate}</td>
+            <td>三级佣金比例:{$row.level_3_rate}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="panel panel-default panel-intro">
+    <div class="panel-heading">
+        {:build_heading(null,FALSE)}
+        <ul class="nav nav-tabs" data-field="commission_log.level">
+            <li class="{:$Think.get.level === null ? 'active' : ''}"><a href="#t-all" data-value="" data-toggle="tab">{:__('All')}</a></li>
+            {foreach name="levelList" item="vo"}
+            <li class="{:$Think.get.level === (string)$key ? 'active' : ''}"><a href="#t-{$key}" data-value="{$key}" data-toggle="tab">{$vo}</a></li>
+            {/foreach}
+        </ul>
+    </div>
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+                        <!-- <a href="javascript:;" class="btn btn-success btn-add {:$auth->check('user/commission_log/add')?'':'hide'}" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a> -->
+                        <!--<a href="javascript:;" class="btn btn-success btn-edit btn-disabled disabled {:$auth->check('user/commission_log/edit')?'':'hide'}" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>-->
+                        <!-- <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled {:$auth->check('user/commission_log/del')?'':'hide'}" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a> -->
+                        
+
+                        <!--<div class="dropdown btn-group {:$auth->check('user/commission_log/multi')?'':'hide'}">
+                            <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> {:__('More')}</a>
+                            <ul class="dropdown-menu text-left" role="menu">
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> {:__('Set to normal')}</a></li>
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=hidden"><i class="fa fa-eye-slash"></i> {:__('Set to hidden')}</a></li>
+                            </ul>
+                        </div>
+
+                        <a class="btn btn-success btn-recyclebin btn-dialog {:$auth->check('user/commission_log/recyclebin')?'':'hide'}" href="user/commission_log/recyclebin" title="{:__('Recycle bin')}"><i class="fa fa-recycle"></i> {:__('Recycle bin')}</a>-->
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="0"
+                           data-operate-del="0"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

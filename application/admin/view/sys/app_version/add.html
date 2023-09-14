@@ -1,0 +1,148 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('System')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-system" data-rule="required" class="form-control selectpicker" name="row[system]">
+                {foreach name="systemList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Channel')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-channel" data-rule="required" class="form-control selectpicker" name="row[channel]">
+                {foreach name="channelList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-number" data-rule="required" class="form-control" name="row[number]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Update_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-update_type" data-rule="required" class="form-control selectpicker" name="row[update_type]">
+                {foreach name="updateTypeList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Download_type_and')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-download_type_and" data-rule="required" class="form-control selectpicker" name="row[download_type_and]">
+                {foreach name="downloadTypeAndList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Update_url_and_file')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-update_url_and_file" class="form-control" size="50" name="row[update_url_and_file]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-update_url_and_file" class="btn btn-danger faupload" data-input-id="c-update_url_and_file" data-multiple="false" data-preview-id="p-update_url_and_file"  ><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-update_url_and_file" class="btn btn-primary fachoose" data-input-id="c-update_url_and_file" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-update_url_and_file"></span>
+            </div>
+            <!-- <ul class="row list-inline faupload-preview" id="p-update_url_and_file"></ul> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Download_type_ios')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-download_type_ios" data-rule="required" class="form-control selectpicker" name="row[download_type_ios]">
+                {foreach name="downloadTypeIosList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Update_url_ios_file')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-update_url_ios_file" class="form-control" size="50" name="row[update_url_ios_file]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-update_url_ios_file" class="btn btn-danger faupload" data-input-id="c-update_url_ios_file" data-multiple="false" data-preview-id="p-update_url_ios_file" ><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-update_url_ios_file" class="btn btn-primary fachoose" data-input-id="c-update_url_ios_file" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-update_url_ios_file"></span>
+            </div>
+            <!-- <ul class="row list-inline faupload-preview" id="p-update_url_ios_file"></ul> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Download_type_wgt')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-download_type_wgt" data-rule="required" class="form-control selectpicker" name="row[download_type_wgt]">
+                {foreach name="downloadTypeWgtList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Update_url_wgt_file')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-update_url_wgt_file" class="form-control" size="50" name="row[update_url_wgt_file]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-update_url_wgt_file" class="btn btn-danger faupload" data-input-id="c-update_url_wgt_file" data-multiple="false" data-preview-id="p-update_url_wgt_file"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-update_url_wgt_file" class="btn btn-primary fachoose" data-input-id="c-update_url_wgt_file" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-update_url_wgt_file"></span>
+            </div>
+            <!-- <ul class="row list-inline faupload-preview" id="p-update_url_wgt_file"></ul> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="1"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

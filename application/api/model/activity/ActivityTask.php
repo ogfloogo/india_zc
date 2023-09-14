@@ -1,0 +1,70 @@
+<?php
+
+namespace app\api\model\activity;
+
+use app\api\model\activity\BaseModel;
+use think\Model;
+use think\cache\driver\Redis;
+use think\Config;
+use think\Db;
+use think\Exception;
+use think\helper\Time;
+use think\Log;
+
+
+class ActivityTask extends BaseModel
+{
+    protected function initialize()
+    {
+        parent::initialize();
+        $prefix_config = Config::get('activity.redis_key_prefix')['activity_task'];
+        $this->info_prefix = $prefix_config['info'];
+        $this->set_prefix = $prefix_config['set'];
+        $this->union_set_prefix = $prefix_config['set'] . 'union:';
+    }
+
+    public function list($id)
+    {
+        $common_set_key = $this->set_prefix . '0';
+        $level_set_key = $this->set_prefix . $id;
+        $set_num = $this->redisInstance->zunionstore($this->union_set_prefix . $id, [$level_set_key, $common_set_key]);
+        $list = [];
+        if ($set_num) {
+            $level_list = $this->redisInstance->zRevRange($this->union_set_prefix . $id, 0, -1, true);
+            foreach ($level_list as $a_id => $seq) {
+                $item = $this->formatInfo($a_id);
+                $list[] = $item;
+            }
+        }
+        return $list;
+    }
+
+
+    public function info($id)
+    {
+        $info_key = $this->info_prefix . $id;
+        $detail_info = $this->redisInstance->hGetAll($info_key);
+        return $detail_info;
+    }
+
+    public function formatInfo($id)
+    {
+        $detail_info = $this->info($id);
+        $info = [];
+        if ($detail_info) {
+            $info['id'] = $detail_info['id'];
+            $info['name'] = $detail_info['name'];
+            $info['level'] = $detail_info['level'];
+            $info['image'] = $detail_info['image'] ? format_image($detail_info['image'], true) : '';
+            $info['target_num'] = $detail_info['num'];
+            $info['url'] = $detail_info['url'];
+            // $banner_images = explode(',', $detail['banner_images']);
+            // $array = [];
+            // foreach ($banner_images as $key => $value) {
+            //     $array[] = format_image($value);
+            // }
+            // $detail['banner_images'] = implode(',', $array);
+        }
+        return $info;
+    }
+}

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <title>乐趣复制</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Plugin CSS -->
+        <link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://cdn.staticfile.org/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style type="text/css">
+            body {
+                padding-top: 70px; margin-bottom: 15px;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                font-family: "Roboto", "SF Pro SC", "SF Pro Display", "SF Pro Icons", "PingFang SC", BlinkMacSystemFont, -apple-system, "Segoe UI", "Microsoft Yahei", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+                font-weight: 400;
+            }
+            h2        { font-size: 1.2em; }
+            hr        { margin-top: 10px; }
+            .tab-pane { padding-top: 10px; }
+            .mt0      { margin-top: 0px; }
+            .footer   { font-size: 12px; color: #666; }
+            .docs-list .label    { display: inline-block; min-width: 65px; padding: 0.3em 0.6em 0.3em; }
+            .string   { color: green; }
+            .number   { color: darkorange; }
+            .boolean  { color: blue; }
+            .null     { color: magenta; }
+            .key      { color: red; }
+            .popover  { max-width: 400px; max-height: 400px; overflow-y: auto;}
+            .list-group.panel > .list-group-item {
+            }
+            .list-group-item:last-child {
+                border-radius:0;
+            }
+            h4.panel-title a {
+                font-weight:normal;
+                font-size:14px;
+            }
+            h4.panel-title a .text-muted {
+                font-size:12px;
+                font-weight:normal;
+                font-family: 'Verdana';
+            }
+            #sidebar {
+                width: 220px;
+                position: fixed;
+                margin-left: -240px;
+                overflow-y:auto;
+            }
+            #sidebar > .list-group {
+                margin-bottom:0;
+            }
+            #sidebar > .list-group > a{
+                text-indent:0;
+            }
+            #sidebar .child > a .tag{
+                position: absolute;
+                right: 10px;
+                top: 11px;
+            }
+            #sidebar .child > a .pull-right{
+                margin-left:3px;
+            }
+            #sidebar .child {
+                border:1px solid #ddd;
+                border-bottom:none;
+            }
+            #sidebar .child:last-child {
+                border-bottom:1px solid #ddd;
+            }
+            #sidebar .child > a {
+                border:0;
+                min-height: 40px;
+            }
+            #sidebar .list-group a.current {
+                background:#f5f5f5;
+            }
+            @media (max-width: 1620px){
+                #sidebar {
+                    margin:0;
+                }
+                #accordion {
+                    padding-left:235px;
+                }
+            }
+            @media (max-width: 768px){
+                #sidebar {
+                    display: none;
+                }
+                #accordion {
+                    padding-left:0px;
+                }
+            }
+            .label-primary {
+                background-color: #248aff;
+            }
+            .docs-list .panel .panel-body .table {
+                margin-bottom: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                ###token,language="english"
+###短信发送-用户注册-验证码发送
+@mobile = 13888888880
+POST  http://192.168.0.115/api/sms/send HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#手机号码
+mobile={{mobile}}
+
+###短信发送-登录密码重置
+@mobile = 13888888880
+POST  http://192.168.0.115/api/sms/sendreset HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#手机号码
+mobile={{mobile}}
+
+###短信发送-提现密码重置
+@mobile = 13888888880
+POST  http://192.168.0.115/api/sms/sendwithdraw HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#手机号码
+mobile={{mobile}}
+
+###用户注册
+@mobile = 13888888880
+@password = aa111111
+@re_password = 2312312
+@code = 232321
+
+POST  http://192.168.0.115/api/user/register HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#手机号码
+mobile={{mobile}}
+#密码
+&password={{password}}
+#再次输入密码
+&re_password={{re_password}}
+#验证码
+&code={{code}}
+
+###用户登录
+@mobile = 13888888880
+@password = aa111111
+
+POST  http://192.168.0.115/api/user/login HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#手机号码
+mobile={{mobile}}
+#密码
+&password={{password}}
+
+###用户退出登录
+@token = "dasdasd"
+
+POST  http://192.168.0.115/api/user/login HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#token
+token={{token}}
+
+###用户信息
+POST  http://192.168.0.115/api/user/getuserinfo HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###登录密码重置
+@token = "dasdada"
+@mobile = 13888888880
+@password = aa111111
+@re_password = 2312312
+@code = 232321
+
+POST  http://192.168.0.115/api/user/resetpwd HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#手机号码
+mobile={{mobile}}
+#密码
+&password={{password}}
+#再次输入密码
+&re_password={{re_password}}
+#验证码
+&code={{code}}
+
+###首页轮播图
+POST  http://192.168.0.115/api/homepage/getbanner HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+####### 地址管理
+###地址列表
+POST  http://192.168.0.115/api/personalcenter/getaddress HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+### 地址添加
+@token = "dasdas"
+@name = "zhangsan"
+@mobile = "12312312"
+@postcode = "23123"
+@province = "ceshi"
+@city = "ceshi"
+@county = "ceshi"
+@village = "ceshi"
+@address = "ceshi"
+@is_default = 1
+
+POST  http://192.168.0.115/api/personalcenter/address HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#收货人姓名
+name={{name}}
+#收货人手机号
+&mobile={{mobile}}
+#收货邮编
+&postcode={{postcode}}
+#省份
+&province={{province}}
+#城市
+&city={{city}}
+#县城
+&county={{county}}
+#农村
+&village={{village}}
+#详细地址
+&address={{address}}
+#是否默认地址
+&is_default={{is_default}}
+
+### 地址编辑
+@token = "dasdas"
+@id = 1
+@name = "zhangsan"
+@mobile = "12312312"
+@postcode = "23123"
+@province = "ceshi"
+@city = "ceshi"
+@county = "ceshi"
+@village = "ceshi"
+@address = "ceshi"
+@is_default = 1
+
+POST  http://192.168.0.115/api/personalcenter/editaddress HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+id={{id}}
+#收货人姓名
+&name={{name}}
+#收货人手机号
+&mobile={{mobile}}
+#收货邮编
+&postcode={{postcode}}
+#省份
+&province={{province}}
+#城市
+&city={{city}}
+#县城
+&county={{county}}
+#农村
+&village={{village}}
+#详细地址
+&address={{address}}
+#是否默认地址
+&is_default={{is_default}}
+
+### 地址删除
+@token = "dasdas"
+@id = 1
+
+POST  http://192.168.0.115/api/personalcenter/deladdress HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+id={{id}}
+
+### 地址-设置默认
+@token = "dasdas"
+@id = 1
+@is_default=1
+
+POST  http://192.168.0.115/api/personalcenter/setdefault HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+id={{id}}
+&is_default={{is_default}}
+####### 银行卡管理
+###银行卡列表
+POST  http://192.168.0.115/api/personalcenter/getbanklist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+### 银行卡添加
+@token = "dasdas"
+@username = "username"
+@bankcard = "12312312"
+@bankname = "23123"
+@bankphone = "ceshi"
+
+POST  http://192.168.0.115/api/personalcenter/addbankcard HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#持卡人名字
+username={{username}}
+#卡号
+&bankcard={{bankcard}}
+#银行卡名称
+&bankname={{bankname}}
+#银行卡手机号
+&bankphone={{bankphone}}
+
+### 银行卡编辑
+@token = "dasdas"
+@id=1
+@username = "username"
+@bankcard = "12312312"
+@bankname = "23123"
+@bankphone = "ceshi"
+
+POST  http://192.168.0.115/api/personalcenter/editbankcard HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+id={{id}}
+#收货人姓名
+&username={{username}}
+#收货人手机号
+&bankcard={{bankcard}}
+#收货邮编
+&bankname={{bankname}}
+#省份
+&bankphone={{bankphone}}
+
+### 银行卡删除
+@token = "dasdas"
+@id = 1
+
+POST  http://192.168.0.115/api/personalcenter/delbankcard HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+id={{id}}
+
+### 银行卡-设置默认
+@token = "dasdas"
+@id = 1
+@default=1
+
+POST  http://192.168.0.115/api/personalcenter/setdefaultbank HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+id={{id}}
+&default={{default}}
+
+###我的团队-统计
+@token = "dasdas"
+
+POST  http://192.168.0.115/api/team/myteamtotal HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###我的团队-团队列表
+
+@token = "dasdas"
+@level = 1
+
+POST  http://192.168.0.115/api/team/myteamlist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+level={{level}}
+
+###商品分类
+POST  http://192.168.0.115/api/goods/goodscategory HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###商品列表
+@id=0
+POST  http://192.168.0.115/api/goods/goodslist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+id={{id}}
+
+###商品详情
+@id=1
+POST  http://192.168.0.115/api/goods/goodsdetail HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+id={{id}}
+
+###首页商品区
+POST  http://192.168.0.115/api/goods/homepagegoods HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###首页推荐商品区
+POST  http://192.168.0.115/api/goods/recommend HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###图片上传
+@file=''
+POST  http://192.168.0.115/api/Uploads/uploadfile HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###下单
+#1=开团订单,2=一键成团订单
+@type=0
+#商品金额
+@amount=200
+#商品ID
+@good_id=1
+#预计收益
+@earnings=100
+#商品分类ID
+@category_id=1
+POST  http://192.168.0.115/api/order/addorder HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#1=开团订单,2=一键成团订单
+type={{type}}
+#商品金额
+&amount={{amount}}
+#商品ID
+&good_id={{good_id}}
+#预计收益
+&earnings={{earnings}}
+#商品分类ID
+&category_id={{category_id}}
+
+###邀请奖励-规则
+POST  http://192.168.0.115/api/useraward/rule HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###邀请奖励-用户信息
+POST  http://192.168.0.115/api/useraward/userinfo HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###邀请奖励-奖励列表
+@page = 1
+POST  http://192.168.0.115/api/useraward/rewardlist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+//分页-当前页-1开始
+page={{page}}
+
+###邀请奖励-领取奖励
+@id = 1
+POST  http://192.168.0.115/api/useraward/rewardfor HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+//列表ID
+id={{id}}
+
+###提现密码修改
+@mobile = 1111
+@password = 1111
+@code = 1111
+POST  http://192.168.0.115/api/withdraw/resetpassword HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+mobile={{mobile}}
+&password={{password}}
+&code={{code}}
+
+###用户级别特权
+POST  http://192.168.0.115/api/userlevel/tablelist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###FAQ问答列表
+POST  http://192.168.0.115/api/faq/list HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###FAQ平台简介
+POST  http://192.168.0.115/api/faq/pingtai_picture HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###用户资金-收入，支出统计
+POST  http://192.168.0.115/api/usermoneylog/moneytotal HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+//当前页面，第一页开始
+page={{page}}
+
+###用户资金记录
+POST  http://192.168.0.115/api/usermoneylog/list HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+//当前页面，第一页开始
+page={{page}}
+
+###系统配置
+POST  http://192.168.0.115/api/setting/list HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###仓库列表
+POST  http://192.168.0.115/api/Userwarehouse/list HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#当前页
+page={{page}}
+# 0可兑现商品 1已兑换  2配送商品
+&type={{type}}
+
+###仓库列表-可兑现金额
+POST  http://192.168.0.115/api/Userwarehouse/gettotal HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###仓库列表-地址列表
+POST  http://192.168.0.115/api/Userwarehouse/getaddress HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+
+###仓库列表-地址确认
+@order_id = "111"
+
+@wid=1
+@address_id="1"
+POST  http://192.168.0.115/api/Userwarehouse/verifyaddress HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#订单ID
+order_id={{order_id}}
+#仓库ID
+&wid={{wid}}
+#地址ID
+&address_id={{address_id}}
+
+###仓库列表-兑换现金
+@wid=1
+POST  http://192.168.0.115/api/Userwarehouse/exchangemoney HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#仓库ID
+wid={{wid}}
+
+###仓库列表-兑换全部现金 All
+@money=2000
+POST  http://192.168.0.115/api/Userwarehouse/exchangemoneyall HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#兑换金额
+money={{money}}
+
+###银行编码
+POST  http://192.168.0.115/api/Withdraw/bankcodelist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###我的团购-列表
+@page=1
+@type=1
+POST  http://192.168.0.115/api/order/orderlist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#分页
+page={{page}}
+&type={{type}}
+
+###我的团购-当天次数统计
+POST  http://192.168.0.115/api/order/timestotal HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###个人中心-用户协议
+POST  http://192.168.0.115/api/setting/userprotocol HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###个人中心-编辑资料-昵称
+@nickname="aaa"
+POST  http://192.168.0.115/api/user/profile HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#昵称
+nickname={{nickname}}
+
+###个人中心-编辑资料-头像
+@file = ""
+POST  http://192.168.0.115/api/uploads/updateavatar HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#头像
+file={{file}}
+
+###用户提现-获取参数
+POST  http://192.168.0.115/api/withdraw/setting HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###用户发起提现
+@password="aaa"
+@price = 100
+@bank_id=1
+POST  http://192.168.0.115/api/withdraw/userwithdraw HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#提现密码
+password={{password}}
+#提现金额
+&price={{price}}
+#提现银行卡ID
+&bank_id={{bank_id}}
+
+###拼团列表推荐
+POST  http://192.168.0.115/api/goods/buyerrecommend HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###拼团列表
+POST  http://192.168.0.115/api/goods/buyerlist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###提现记录
+@page=1
+@status = 1
+POST  http://192.168.0.115/api/withdraw/withdrawlog HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#分页
+page={{page}}
+#状态
+&status={{status}}
+
+###充值记录
+@page=1
+@status = 1
+POST  http://192.168.0.115/api/payment/paymentlog HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#分页
+page={{page}}
+#充值状态:0=待支付,1=成功,2=失败
+&status={{status}}  
+
+###充值渠道列表
+POST  http://192.168.0.115/api/rechargechannel/list HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###用户充值
+@price = 100
+@channel_id=1
+POST  http://192.168.0.115/api/payment/topup HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#充值金额
+price={{price}}
+#渠道ID
+&channel_id={{channel_id}}
+
+###充值面额
+POST  http://192.168.0.115/api/setting/amountlist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###tab导航(tablist)，悬浮窗（windows）
+POST  http://192.168.0.115/api/setting/systemlist HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###仓库-物流详情
+@wid = 1
+POST  http://192.168.0.115/api/userwarehouse/shippingdetails HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#仓库ID
+wid={{wid}}
+
+###仓库-物流详情-确认收货
+@id = 1
+POST  http://192.168.0.115/api/userwarehouse/confirm_receipt HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+#ID
+id={{id}}
+            </div>
+        </div>
+        </script>
+    </body>
+</html>

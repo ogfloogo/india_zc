@@ -1,0 +1,277 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-content" data-rule="required" class="form-control" name="row[content]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('List_content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-list_content" data-rule="required" class="form-control" name="row[list_content]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Zc_day')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-zc_day" data-rule="required" class="form-control" name="row[zc_day]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-money" data-rule="required" class="form-control" step="0.01" name="row[money]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Popularize')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select id="c-popularize" class="form-control selectpicker" name="row[popularize]">
+                {foreach name="popularizeList" item="vo"}
+                <option value="{$key}" {in name="key" value="0" }selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Username')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-username" data-rule="required" class="form-control" name="row[username]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Userimage')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-userimage" data-rule="required" class="form-control" size="50" name="row[userimage]"
+                    type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-userimage" class="btn btn-danger faupload"
+                            data-input-id="c-userimage"
+                            data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp"
+                            data-multiple="false" data-preview-id="p-userimage"><i class="fa fa-upload"></i>
+                            {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-userimage" class="btn btn-primary fachoose"
+                            data-input-id="c-userimage" data-mimetype="image/*" data-multiple="false"><i
+                                class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-userimage"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-userimage"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image" class="form-control" size="50" name="row[image]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-image" class="btn btn-danger faupload"
+                            data-input-id="c-image"
+                            data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp"
+                            data-multiple="false" data-preview-id="p-image"><i class="fa fa-upload"></i>
+                            {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose"
+                            data-input-id="c-image" data-mimetype="image/*" data-multiple="true"><i
+                                class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rotation_images')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-rotation_images" class="form-control" size="50" name="row[rotation_images]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-rotation_images" class="btn btn-danger faupload"
+                            data-input-id="c-rotation_images"
+                            data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp"
+                            data-multiple="true" data-preview-id="p-rotation_images"><i class="fa fa-upload"></i>
+                            {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-rotation_images" class="btn btn-primary fachoose"
+                            data-input-id="c-rotation_images" data-mimetype="image/*" data-multiple="true"><i
+                                class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-rotation_images"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-rotation_images"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Details_images')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-details_images" class="form-control editor" rows="5" name="row[details_images]"
+                cols="50"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Team_images')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-team_images" class="form-control editor" rows="5" name="row[team_images]"
+                cols="50"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Finance_images')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-finance_images" class="form-control editor" rows="5" name="row[finance_images]"
+                cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('File1_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-file1_name" class="form-control" name="row[file1_name]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('File1')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-file1" class="form-control" name="row[file1]" type="text"
+                placeholder="填入url">
+        </div>
+    </div>
+    <!--    <div class="form-group">-->
+    <!--        <label class="control-label col-xs-12 col-sm-2">{:__('File1')}:</label>-->
+    <!--        <div class="col-xs-12 col-sm-8">-->
+    <!--            <div class="input-group">-->
+    <!--                <input id="c-file1" class="form-control" size="50" name="row[file1]" type="text">-->
+    <!--                <div class="input-group-addon no-border no-padding">-->
+    <!--                    <span><button type="button" id="faupload-file1" class="btn btn-danger faupload" data-input-id="c-file1" data-mimetype="" data-multiple="true" data-preview-id="p-file1"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>-->
+    <!--                    <span><button type="button" id="fachoose-file1" class="btn btn-primary fachoose" data-input-id="c-file1" data-mimetype="" data-multiple="true"><i class="fa fa-list"></i> {:__('Choose')}</button></span>-->
+    <!--                </div>-->
+    <!--                <span class="msg-box n-right" for="c-file1"></span>-->
+    <!--            </div>-->
+    <!--            <ul class="row list-inline faupload-preview" id="p-file1"></ul>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('File2_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-file2_name" class="form-control" name="row[file2_name]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('File2')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-file2" class="form-control" size="50" name="row[file2]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-file2" class="btn btn-danger faupload"
+                            data-input-id="c-file2" data-mimetype="" data-multiple="true" data-preview-id="p-file2"><i
+                                class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-file2" class="btn btn-primary fachoose"
+                            data-input-id="c-file2" data-mimetype="" data-multiple="true"><i class="fa fa-list"></i>
+                            {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-file2"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-file2"></ul>
+        </div>
+    </div>
+
+    <!--    <div class="form-group">-->
+    <!--        <label class="control-label col-xs-12 col-sm-2">{:__('Endtime')}:</label>-->
+    <!--        <div class="col-xs-12 col-sm-8">-->
+    <!--            <input id="c-endtime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[endtime]" type="text" value="{:date('Y-m-d H:i:s')}">-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="form-group">-->
+    <!--        <label class="control-label col-xs-12 col-sm-2">{:__('Robot_status')}:</label>-->
+    <!--        <div class="col-xs-12 col-sm-8">-->
+    <!--            -->
+    <!--            <div class="radio">-->
+    <!--            {foreach name="robotStatusList" item="vo"}-->
+    <!--            <label for="row[robot_status]-{$key}"><input id="row[robot_status]-{$key}" name="row[robot_status]" type="radio" value="{$key}" {in name="key" value="1"}checked{/in} /> {$vo}</label> -->
+    <!--            {/foreach}-->
+    <!--            </div>-->
+
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="form-group">-->
+    <!--        <label class="control-label col-xs-12 col-sm-2">{:__('Robot_addorder_time_start')}:</label>-->
+    <!--        <div class="col-xs-12 col-sm-8">-->
+    <!--            <input id="c-robot_addorder_time_start" class="form-control" name="row[robot_addorder_time_start]" type="number">-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="form-group">-->
+    <!--        <label class="control-label col-xs-12 col-sm-2">{:__('Robot_addorder_time_end')}:</label>-->
+    <!--        <div class="col-xs-12 col-sm-8">-->
+    <!--            <input id="c-robot_addorder_time_end" class="form-control" name="row[robot_addorder_time_end]" type="number">-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="form-group">-->
+    <!--        <label class="control-label col-xs-12 col-sm-2">{:__('Robot_addorder_num_start')}:</label>-->
+    <!--        <div class="col-xs-12 col-sm-8">-->
+    <!--            <input id="c-robot_addorder_num_start" class="form-control" name="row[robot_addorder_num_start]" type="number">-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="form-group">-->
+    <!--        <label class="control-label col-xs-12 col-sm-2">{:__('Robot_addorder_num_end')}:</label>-->
+    <!--        <div class="col-xs-12 col-sm-8">-->
+    <!--            <input id="c-robot_addorder_num_end" class="form-control" name="row[robot_addorder_num_end]" type="number">-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="form-group">-->
+    <!--        <label class="control-label col-xs-12 col-sm-2">{:__('Auto_open')}:</label>-->
+    <!--        <div class="col-xs-12 col-sm-8">-->
+    <!--                        -->
+    <!--            <select  id="c-auto_open" class="form-control selectpicker" name="row[auto_open]">-->
+    <!--                {foreach name="autoOpenList" item="vo"}-->
+    <!--                    <option value="{$key}" {in name="key" value="0"}selected{/in}>{$vo}</option>-->
+    <!--                {/foreach}-->
+    <!--            </select>-->
+
+    <!--        </div>-->
+    <!--    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('标签')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-tab" class="form-control" rows="5" name="row[tab]"
+                cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="radio">
+                {foreach name="statusList" item="vo"}
+                <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio"
+                        value="{$key}" {in name="key" value="0" }checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Weigh')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-weigh" data-rule="required" class="form-control" name="row[weigh]" type="number" value=""
+                placeholder="越小排序越前面">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+<script src="/assets/js/jquery.min.js"></script>

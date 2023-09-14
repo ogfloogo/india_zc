@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'Name'            => '名称',
+    'Type'            => '类型',
+    'Type 0'          => '签到(登录)',
+    'Type 1'          => '充值次数',
+    'Type 2'          => '充值金额',
+    'Type 3'          => 'VIP升级',
+    'Type 4'          => '邀请好友',
+    'Type 5'          => 'VIP保持天数',
+    'Type 6'          => '转发',
+    'Type 7'          => '完成下单',
+    'Type 8'          => 'VIP等级达成',
+    'Type 9'          => '下级充值总额',
+    'Type 10'          => '购买理财次数',
+    'Level_id'        => '需求等级',
+    'Date_type'       => '时间限制',
+    'Date_type 0'     => '不限',
+    'Date_type 1'     => '每天',
+    'Num'             => '目标数值',
+    'Is_auto_get'     => '自动接',
+    'Is_auto_get 0'   => '否',
+    'Is_auto_get 1'   => '是',
+    'Is_auto_prize'   => '自动奖励',
+    'Is_auto_prize 0' => '否',
+    'Is_auto_prize 1' => '是',
+    'Image'           => '图片',
+    'Content'         => '详细内容',
+    'Status'          => '状态',
+    'Status 0'        => '下架',
+    'Status 1'        => '上架'
+];

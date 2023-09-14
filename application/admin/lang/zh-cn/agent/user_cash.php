@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'User_id'     => '用户id',
+    'Order_id'    => '订单号',
+    'Username'    => '真实姓名',
+    'Bankname'    => '银行名',
+    'Bankcard'    => '银行卡号',
+    'Bankcode'    => '银行code',
+    'Order_no'    => '流水号',
+    'Ifsc'        => 'ifsc',
+    'Phone'       => '手机号',
+    'Email'       => '邮箱',
+    'Address'     => '银行卡地址',
+    'Price'       => '提现金额',
+    'Trueprice'   => '到账金额',
+    'After_money' => '提现后余额',
+    'Upi'         => 'upi号码',
+    'Cpf'         => 'cpf',
+    'Ip'          => 'IP',
+    'Content'     => '内容',
+    'Type'        => '提现方式',
+    'Type 1'      => '银行卡',
+    'Type 2'      => 'upi',
+    'Channel'     => '渠道',
+    'Status'      => '状态',
+    'Status 0'    => '待审核',
+    'Status 1'    => '审核通过未提交',
+    'Status 2'    => '通过已提交',
+    'Status 3'    => '代付成功',
+    'Status 4'    => '代付失败',
+    'Status 5'    => '已驳回'
+];
