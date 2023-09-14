@@ -9,7 +9,7 @@ return [
     /**
      * CDN地址
      */
-    'cdnurl'    => 'https://api.risecrowd.org',
+    'cdnurl'    => 'https://api.alphafund.in',
     /**
      * 文件保存格式
      */
