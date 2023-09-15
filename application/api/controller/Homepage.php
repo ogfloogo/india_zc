@@ -77,7 +77,7 @@ class Homepage extends Controller
         $data = [];
         for ($i = 0; $i < 20; $i++) {
             //随机电话号段
-            $my_array = array("70", "80", "81", "90");
+            $my_array = array("6", "7", "8", "9");
             $hd = array_rand($my_array, 1);
             $begin = $my_array[$hd];
             $a = rand(10, 99);
