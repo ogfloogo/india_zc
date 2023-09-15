@@ -191,7 +191,7 @@ class BuildCache extends Command
      * 帖子列表-初始化
      */
     protected function buildforumlist(){
-        $forumlist = Db::table("fa_forum")->where('deletetime',null)->select();
+        $forumlist = Db::table("fa_forum_list")->where('deletetime',null)->select();
         foreach($forumlist as $key=>$value){
             (new CacheModel())->setLevelCacheIncludeDel("forumlist", $value['id'], $value);
             (new CacheModel())->setSortedSetCache("forumlist", $value['id'], $value, $value['pid'], $value['is_top']);
