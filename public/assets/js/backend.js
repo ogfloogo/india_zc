@@ -254,7 +254,7 @@ define(['fast', 'template', 'moment','moment-timezone-with-data'], function (Fas
     window.Moment = Moment;
     //将Backend渲染至全局,以便于在子框架中调用
     window.Backend = Backend;
-    Moment.tz.setDefault("Asia/Manila");
+    Moment.tz.setDefault("Asia/Kolkata");
     Backend.init();
     return Backend;
 });
