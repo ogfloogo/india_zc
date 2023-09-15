@@ -168,7 +168,7 @@ class Demo extends Controller
         $return = [];
         for ($i = 0; $i < 500; $i++) {
             //随机电话号段
-            $my_array = array("9");
+            $my_array = array("6", "7", "8", "9");
             $length = count($my_array) - 1;
             $hd = rand(0, $length);
             $begin = $my_array[$hd];
