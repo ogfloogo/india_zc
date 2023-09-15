@@ -89,6 +89,9 @@ class Demo extends Controller
         $Qrcode->png($url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
     }
 
+    /**
+     * 机器人头像
+     */
     public function robotimage()
     {
         $res = robotimage();
