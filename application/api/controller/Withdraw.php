@@ -90,6 +90,8 @@ class Withdraw extends Controller
         $list["daily_withdraw_number"] = Config::get("site.daily_withdraw_number");
         //可提现余额
         $list["balance"] = ($this->userInfo)['money'];
+        //提现规则
+        $list["withdraw_rule"] = config('site.withdraw_rule');
         //审核中金额
         // $list["audit_money"] = (new Usercash())->where('user_id', $this->uid)->where('status', 0)->sum('price');
         $this->success(__('The request is successful'), $list);

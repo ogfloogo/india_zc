@@ -78,6 +78,7 @@ class Reward extends Controller
         $return['signin'] = [
             'normal_signin' => config('site.normal_signin'),
             'promoter_signin' => config('site.promoter_signin'),
+            'signin_text' => config('site.signin_text'),
             'signed_in' => $signed_in?1:0
         ];
         $month_reward = (new Monthreward())->order('num asc')->select();
@@ -101,6 +102,7 @@ class Reward extends Controller
             'need_num' => $need_num,
             'reward' => $reward
         ];
+        $return['month_task']['status'] = $month_reward?1:0;
         $language = $this->language;
         $day_reward = (new Dayreward())->field('id,num,reward,createtime,type,title_json')->order('type asc')->select();
         $success = 1;
