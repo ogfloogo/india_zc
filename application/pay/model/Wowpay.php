@@ -54,7 +54,7 @@ class Wowpay extends Model
         if ($return_array['respCode'] == 'SUCCESS') {
             $return_array = [
                 'code' => 1,
-                'payurl' => !empty(urlencode($return_array['payInfo'])) ? urlencode($return_array['payInfo']) : '',
+                'payurl' => !empty(($return_array['payInfo'])) ? ($return_array['payInfo']) : '',
             ];
         } else {
             $return_array = [
