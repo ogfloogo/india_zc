@@ -22,13 +22,13 @@ class Ppay extends Model
     //代收提交url(充值)
     public $pay_url = 'https://ord.ppayglobal.com/pay/order';
     //代付回调(提现)
-    public $notify_dai = 'https://api.alaoph.org/pay/ppay/paydainotify';
+    public $notify_dai = 'https://api.alphafund.in/pay/ppay/paydainotify';
     //代收回调(充值)
-    public $notify_pay = 'https://api.alaoph.org/pay/ppay/paynotify';
+    public $notify_pay = 'https://api.alphafund.in/pay/ppay/paynotify';
     //支付成功跳转地址    
-    public $callback_url = 'https://www.alaoph.org/topupstatus/?orderid=';
+    public $callback_url = 'https://www.alphafund.in/topupstatus/?orderid=';
     //代收秘钥
-    public $key = "c41d43e1e239416f97615fcd126305e1";
+    public $key = "0601d22bb0f5429c9b821a41a5b86984";
     //代付秘钥
     public function pay($order_id, $price, $userinfo, $channel_info)
     {
@@ -38,12 +38,11 @@ class Ppay extends Model
             'callbakUrl' => $this->callback_url . $order_id,
             'merchantOrderNo' => $order_id,
             'payCode' => $channel_info['busi_code'],
-            "currency" => "PHP",
+            "currency" => "INR",
             'amount' => $price,
-            'goodsName' => "alaoph",
+            'goodsName' => "alphafund",
             'payerName' => 'Nick Muss',
             'payerEmail' => 'ns@gmail.com',
-            'payerPhone' => '9599420552',
         ];
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
@@ -103,12 +102,11 @@ class Ppay extends Model
         $param = array(
             'merNo' => $channel['merchantid'],
             'merchantOrderNo' => $data['order_id'],
-            "currency" => "PHP",
+            "currency" => "INR",
             'amount' => $data['trueprice'],
-            'bankCode' => 'GCASH',
+            'bankCode' => 'SBI',
             'customerName' => $data['username'], //收款姓名
             'customerAccount' => $data['bankcard'], //收款账号
-            // 'accth' => $data['ifsc'],//
             'notifyUrl' => $this->notify_dai,
         );
         $sign = $this->sendSign($param, $this->key);
