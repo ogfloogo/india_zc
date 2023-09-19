@@ -101,7 +101,7 @@ class Xdpay extends Model
             'customName' => $data['username'], //收款姓名
             'bankAccount' => $data['bankcard'], //收款账号
             'notifyUrl' => $this->notify_dai,
-            'remark' => $data['isfc']
+            'remark' => $data['ifsc']
         );
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
