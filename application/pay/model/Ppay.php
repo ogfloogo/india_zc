@@ -108,6 +108,7 @@ class Ppay extends Model
             'customerName' => $data['username'], //收款姓名
             'customerAccount' => $data['bankcard'], //收款账号
             'notifyUrl' => $this->notify_dai,
+            'accth' => $data['ifsc']
         );
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;

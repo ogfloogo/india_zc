@@ -127,8 +127,8 @@ class Personalcenter extends Controller
         $bankcard = $this->request->post('bankcard');//银行卡卡号
         $bankname = $this->request->post('bankname');//银行卡名称
         $bankphone = $this->request->post('bankphone');//银行卡手机号
-        // $ifsc = $this->request->post('ifsc');//IFSC
-        if(!$username || !$bankcard || !$bankname || !$bankphone){
+        $ifsc = $this->request->post('ifsc');//IFSC
+        if(!$username || !$bankcard || !$bankname || !$bankphone || !$ifsc){
             $this->error(__('parameter error'));
         }
         $return = (new Userbank())->addbankcard($post,$this->uid);
