@@ -22,15 +22,15 @@ class Wowpay extends Model
     //代收提交url(充值)
     public $pay_url = 'https://pay6de1c7.wowpayglb.com/pay/web';
     //代付回调(提现)
-    public $notify_dai = 'https://api.alaoph.org/pay/wowpay/paydainotify';
+    public $notify_dai = 'https://api.alphafund.in/pay/wowpay/paydainotify';
     //代收回调(充值)
-    public $notify_pay = 'https://api.alaoph.org/pay/wowpay/paynotify';
+    public $notify_pay = 'https://api.alphafund.in/pay/wowpay/paynotify';
     //支付成功跳转地址    
-    public $callback_url = 'https://www.alaoph.org/topupstatus/?orderid=';
+    public $callback_url = 'https://www.alphafund.in/topupstatus/?orderid=';
     //代收秘钥
-    public $key = "6b176175c8394db6b0d2a7e20a6c6aae";
+    public $key = "TZLMQ1QWJCUSFLH02LAYRZBJ1WK7IHSG";
     //代付秘钥
-    public $daikey = "QREM68US0SC3RVG9EXCXWVXC3LMDESQ3";
+    public $daikey = "MZBG89MDIBEDWJOJQYEZVSNP8EEVMSPM";
     public function pay($order_id, $price, $userinfo, $channel_info)
     {
         $param = [
@@ -105,11 +105,11 @@ class Wowpay extends Model
             'mch_transferId' => $data['order_id'],
             'transfer_amount' => (int)$data['trueprice'],
             'apply_date' => date('Y-m-d H:i:s', time()),
-            // 'bank_code' => $data['bankname'], //银行编码	 
+            // 'bank_code' => $data['bankname'], //银行编码
             'bank_code' => $channel['busi_code'], //银行编码
             'receive_account' => $data['bankcard'], //收款账号
             'receive_name' => $data['username'], //收款姓名
-            // 'remark' => $data['ifsc'] ?? "", //urc_ifsc
+            'remark' => $data['ifsc'] ?? "", //urc_ifsc
             'back_url' => $this->notify_dai,
         );
         $sign = $this->generateSign($params, $this->daikey);
