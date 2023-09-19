@@ -22,11 +22,11 @@ class Xdpay extends Model
     //代收提交url(充值)
     public $pay_url = 'https://apis.xdpay168.com/client/collect/create';
     //代付回调(提现)
-    public $notify_dai = 'https://api.alaoph.org/pay/xdpay/paydainotify';
+    public $notify_dai = 'https://api.alphafund.in/pay/xdpay/paydainotify';
     //代收回调(充值)
-    public $notify_pay = 'https://api.alaoph.org/pay/xdpay/paynotify';
+    public $notify_pay = 'https://api.alphafund.in/pay/xdpay/paynotify';
     //代收秘钥
-    public $key = "e504c703d89548d782cc3cbda2847a15";
+    public $key = "d8041724eab14c448362a93f704fc489";
     //代付秘钥
     public function pay($order_id, $price, $userinfo, $channel_info)
     {
@@ -36,7 +36,7 @@ class Xdpay extends Model
             'payCode' => $channel_info['busi_code'],
             'amount' => $price,
             'notifyUrl' => $this->notify_pay,
-            'callbackUrl' => "https://www.alaoph.org"
+            'callbackUrl' => "https://www.alphafund.in"
         ];
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
@@ -101,6 +101,7 @@ class Xdpay extends Model
             'customName' => $data['username'], //收款姓名
             'bankAccount' => $data['bankcard'], //收款账号
             'notifyUrl' => $this->notify_dai,
+            'remark' => $data['isfc']
         );
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
