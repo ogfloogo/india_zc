@@ -34,18 +34,18 @@ class Payment extends Controller
         $price = $this->request->post('price');
         $channel_id = $this->request->post('channel_id');
         $post['user_id'] = $this->uid;
-        if($channel_id == 6 || $channel_id == 8 || $channel_id == 10 || $channel_id == 14){
-            $return = (new Metapay())->http_post("https://api.taya777.cloud/api/payment/topups",[],json_encode($post,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
-            Log::mylog('用户充值111', $return, 'payment');
-            $return = json_decode($return,true);
-            if(!$return){
-                $this->error(__('payment failure'));
-            }
-            if($return['code'] == 0){
-                $this->error($return['msg']);
-            }
-            $this->success(__('The request is successful'), $return);
-        }
+//        if($channel_id == 6 || $channel_id == 8 || $channel_id == 10 || $channel_id == 14){
+//            $return = (new Metapay())->http_post("https://api.taya777.cloud/api/payment/topups",[],json_encode($post,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+//            Log::mylog('用户充值111', $return, 'payment');
+//            $return = json_decode($return,true);
+//            if(!$return){
+//                $this->error(__('payment failure'));
+//            }
+//            if($return['code'] == 0){
+//                $this->error($return['msg']);
+//            }
+//            $this->success(__('The request is successful'), $return);
+//        }
         if (!$price || !$channel_id) {
             $this->error(__('parameter error'));
         }
