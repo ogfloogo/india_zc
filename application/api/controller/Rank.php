@@ -77,4 +77,20 @@ class Rank extends Controller
         $this->success('The request is successful',$return);
     }
 
+    public function fundtype()
+    {
+        $fund_type1 = json_decode(config('site.fund_type1'),true);
+        $fund_type2 = json_decode(config('site.fund_type2'),true);
+        $fund_type3 = json_decode(config('site.fund_type3'),true);
+        if($fund_type1['status'] == 1){
+            $return[] = $fund_type1;
+        }
+        if($fund_type2['status'] == 1){
+            $return[] = $fund_type2;
+        }
+        if($fund_type3['status'] == 1){
+            $return[] = $fund_type3;
+        }
+        $this->success('The request is successful',$return);
+    }
 }
