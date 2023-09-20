@@ -31,7 +31,7 @@ class Poster extends Controller
         $qrcode = $this->lineQrCode($userinfo['invite_code'],$userinfo['id']);
         //累计投资金额
         $invest_money_total = (new Financeorder())->where(['user_id'=>$userinfo['id']])->sum('amount');
-        $usertotal = (new Usertotal())->where(['user_id'=>$userinfo['id']])->field('crowdfunding_income,invite_number,promotion_award')->find();
+        $usertotal = (new Usertotal())->where(['user_id'=>$userinfo['id']])->field('crowdfunding_income,invite_number,promotion_award,total_commission')->find();
         $return = [
             'qrcode' => $qrcode,
             'invest_money_total' => $invest_money_total,//累计投资金额
