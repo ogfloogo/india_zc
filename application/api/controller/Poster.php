@@ -37,7 +37,8 @@ class Poster extends Controller
             'invest_money_total' => $invest_money_total,//累计投资金额
             'crowdfunding_income' => $usertotal['crowdfunding_income'],//累计投资收益
             'invite_number' => $usertotal['invite_number'],//累计邀请人数
-            'promotion_award' => $usertotal['promotion_award'],//累计邀请激励金收益
+            //            'promotion_award' => $usertotal['promotion_award'],//累计邀请激励金收益
+            'promotion_award' => $usertotal['total_commission'],//换成了团队佣金
         ];
         $this->success(__('operation successfully'),$return);
     }
