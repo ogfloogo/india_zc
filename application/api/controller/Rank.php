@@ -80,6 +80,7 @@ class Rank extends Controller
     public function fundtype()
     {
         $fund_type1 = json_decode(config('site.fund_type1'),true);
+        var_dump($fund_type1);
         $fund_type2 = json_decode(config('site.fund_type2'),true);
         $fund_type3 = json_decode(config('site.fund_type3'),true);
         if($fund_type1['status'] == 1){
