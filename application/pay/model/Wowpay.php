@@ -28,9 +28,9 @@ class Wowpay extends Model
     //支付成功跳转地址    
     public $callback_url = 'https://www.alphafund.in/topupstatus/?orderid=';
     //代收秘钥
-    public $key = "TZLMQ1QWJCUSFLH02LAYRZBJ1WK7IHSG";
+    public $key = "DCD4BRTMEZCLHFH7FFSQDJHJQU0C6XTB";
     //代付秘钥
-    public $daikey = "MZBG89MDIBEDWJOJQYEZVSNP8EEVMSPM";
+    public $daikey = "O8YJHAMMQWKSARWAPJP1RAHVVPTVIBUD";
     public function pay($order_id, $price, $userinfo, $channel_info)
     {
         $param = [
