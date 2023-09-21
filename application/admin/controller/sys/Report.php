@@ -22,7 +22,7 @@ class Report extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\sys\Report;
-
+        $this->view->assign("nowtime", date("Y-m-d H:i:s",time()));
     }
 
 

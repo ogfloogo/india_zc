@@ -105,7 +105,6 @@ class Dashboard extends Backend
 
             'totaluserrecharge'         => count($total_recharge),
             'totaluserwithdraw'         => count($total_withdraw),
-
         ]);
 
         $this->assignconfig('chart_data', ['date' => $column, 'recharge' => $rechargeList, 'withdraw' => $withdrawList, 'user' => $loginList, 'reg' => $userList, 're_user' => $rechargeUserList, 'first' => $firstRechargeUserList]);
