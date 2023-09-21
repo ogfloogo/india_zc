@@ -183,8 +183,8 @@ class Sms extends Controller
 
     protected function sendCodeV3($phone, $code)
     {
-        // $text = "[ALAO] Your OTP  is " . $code . ". The OTP is valid for 10 min.";
-        $text = "[ALAO]Your otp is ".$code.", valid within 10 minutes. do not tell others the otp.";
+        // $text = "[ALPHA] Your OTP  is " . $code . ". The OTP is valid for 10 min.";
+        $text = "[ALPHA]Your otp is ".$code.", valid within 10 minutes. do not tell others the otp.";
         $r = $this->sendV3($phone, $text);
         $r = json_decode($r, true);
         if ($r['status'] != 0) {
@@ -195,7 +195,7 @@ class Sms extends Controller
 
     protected function sendCodeV($phone, $code)
     {
-        $text = "[ALAO] You are applying for withdrawal verification code " . $code . ",Please do not share this verification code with others to avoid losses.";
+        $text = "[ALPHA] You are applying for withdrawal verification code " . $code . ",Please do not share this verification code with others to avoid losses.";
         $r = $this->sendV3($phone, $text);
         $r = json_decode($r, true);
         if ($r['status'] != 0) {
