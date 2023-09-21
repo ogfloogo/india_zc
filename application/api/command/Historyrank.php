@@ -34,7 +34,7 @@ class Historyrank extends Command
                 $key = $user['mobile'];
                 $redis->handler()->zadd('zclc:rank:history:crowdfunding_income_'.date('Y-m-d'),$value['crowdfunding_income'],$key);
             }else{
-                $key = '9'.rand(10, 99).'****'.rand(100, 999);
+                $key = phonenumber();
                 $redis->handler()->zadd('zclc:rank:history:crowdfunding_income_'.date('Y-m-d'),$value['crowdfunding_income'],$key);
             }
         }
@@ -47,7 +47,7 @@ class Historyrank extends Command
                 $key = $user['mobile'];
                 $redis->handler()->zadd('zclc:rank:history:promotion_award_'.date('Y-m-d'),$value['promotion_award'],$key);
             }else{
-                $key = '9'.rand(10, 99).'****'.rand(100, 999);
+                $key = phonenumber();
                 $redis->handler()->zadd('zclc:rank:history:promotion_award_'.date('Y-m-d'),$value['promotion_award'],$key);
             }
         }
@@ -60,7 +60,7 @@ class Historyrank extends Command
                 $key = $user['mobile'];
                 $redis->handler()->zadd('zclc:rank:history:total_commission_'.date('Y-m-d'),$value['total_commission'],$key);
             }else{
-                $key = '9'.rand(10, 99).'****'.rand(100, 999);
+                $key = phonenumber();
                 $redis->handler()->zadd('zclc:rank:history:total_commission_'.date('Y-m-d'),$value['total_commission'],$key);
             }
         }
