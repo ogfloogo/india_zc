@@ -508,6 +508,15 @@ class Setting extends Controller
                 'amount' => $value
             ];
         }
+        for($i=0;$i<=2;$i++){
+            if(empty($return['rank'][$i])){
+                $return['rank'][$i] = [
+                    'nickname' => '',
+                    'avatar' => format_image('/uploads/avatar.png'),
+                    'amount' => 0
+                ];
+            }
+        }
         $this->success('The request is successful',$return);
     }
 }
