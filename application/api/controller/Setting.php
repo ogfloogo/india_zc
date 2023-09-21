@@ -266,9 +266,9 @@ class Setting extends Controller
             $windows[$key]['image'] = format_image($value['image']);
         }
         $list['windows'] = $windows;
-        if($version == "-"){
-            $list['windows'] = [];
-        }
+        // if($version == "-"){
+        //     $list['windows'] = [];
+        // }
         //邀请奖励
         $list['invite_reward'] = Config::get("site.invite_reward");
         //邀请奖励比例
