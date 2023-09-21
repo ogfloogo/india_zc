@@ -57,5 +57,7 @@ return [
     'You need to upgrade to ' => 'आपको बनने की जरूरत है ',
     'Amount error' => 'राशि त्रुटि',
     'You have purchased an experience item' => 'आप पहले ही ट्रायल फंड प्रोजेक्ट में शामिल हो चुके हैं',
-    'Only one experience item can be purchased' => 'ट्रायल फंड परियोजना में केवल एक बार शामिल हो सकते हैं'
+    'Only one experience item can be purchased' => 'ट्रायल फंड परियोजना में केवल एक बार शामिल हो सकते हैं',
+    'Signed in' => 'साइन इन किया',
+    'You have already claimed it' => 'आप पहले ही इसका दावा कर चुके हैं'
 ];

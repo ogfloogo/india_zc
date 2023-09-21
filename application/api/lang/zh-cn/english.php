@@ -60,5 +60,4 @@ return [
     'Only one experience item can be purchased' => 'Trial Fund project can be joined only once',
     'Signed in' => 'Signed in',
     'You have already claimed it' => 'You have already claimed it'
-
 ];
