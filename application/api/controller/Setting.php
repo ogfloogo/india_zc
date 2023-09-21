@@ -226,18 +226,32 @@ class Setting extends Controller
                 "selectedIconPath" => format_images("/static/image/tabbars/home-active.png"),
                 "text" => "होमपेज",
             ];
+            // $list['tablist'][] = [
+            //     "pagePath" => "/pages/project/list",
+            //     "iconPath" => format_images("/static/image/tabbars/project-inactive.png"),
+            //     "selectedIconPath" => format_images("/static/image/tabbars/project-active.png"),
+            //     "text" => "परियोजना",
+            // ];
+            if($f == 1){
+                $list['tablist'][] = [
+                    "pagePath" => "/pages/home/plan",
+                    "iconPath" => format_images("/static/image/tabbars/plan-inactive.png"),
+                    "selectedIconPath" => format_images("/static/image/tabbars/plan-active.png"),
+                    "text" => "योजना",
+                ];
+            }
             $list['tablist'][] = [
-                "pagePath" => "/pages/project/list",
-                "iconPath" => format_images("/static/image/tabbars/project-inactive.png"),
-                "selectedIconPath" => format_images("/static/image/tabbars/project-active.png"),
-                "text" => "परियोजना",
-            ];
-            $list['tablist'][] = [
-                "pagePath" => "/pages/team/popular",
+                "pagePath" => "/pages/invite/reward",
                 "iconPath" => format_images("/static/image/tabbars/bonus-inactive.png"),
                 "selectedIconPath" => format_images("/static/image/tabbars/bonus-active.png"),
-                "text" => "बोनस",
+                "text" => "बक्शीश",
             ];
+            // $list['tablist'][] = [
+            //     "pagePath" => "/pages/team/popular",
+            //     "iconPath" => format_images("/static/image/tabbars/bonus-inactive.png"),
+            //     "selectedIconPath" => format_images("/static/image/tabbars/bonus-active.png"),
+            //     "text" => "बोनस",
+            // ];
             $list['tablist'][] = [
                 "pagePath" => "/pages/team/team",
                 "iconPath" => format_images("/static/image/tabbars/team-inactive.png"),
