@@ -296,7 +296,7 @@ return [
         //插件纯净模式，插件启用后是否删除插件目录的application、public和assets文件夹
         'addon_pure_mode'       => true,
         //允许跨域的域名,多个以,分隔
-        'cors_request_domain'   => 'localhost,127.0.0.1,https://alaoph.org,https://api.alaoph.org',
+        'cors_request_domain'   => 'localhost,127.0.0.1,https://alaoph.org,https://api.alphafund.in',
         //版本号
         'version'               => '1.3.4.20220530',
         //API接口地址
