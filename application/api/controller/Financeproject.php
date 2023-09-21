@@ -15,7 +15,7 @@ class Financeproject extends Controller
         if(!$id){
             $this->error(__('parameter error'));
         }
-        $field = ['id','rate','type','day','user_min_buy','user_max_buy','fixed_amount','popularize','image','f_id','interest','capital','buy_level'];
+        $field = ['id','rate','type','day','user_min_buy','user_max_buy','fixed_amount','popularize','image','f_id','interest','capital','buy_level','is_new_hand'];
         $field2 = ['file1','file2','file1_name','file2_name'];
         $info = (new \app\api\model\Financeproject())->detail($id,$field);
         $info['can_buy'] = 1;

@@ -18,6 +18,9 @@ class Popularizeaward extends Model
     public function createData($project_info,$user_id){
         $projects = (new Financeproject())->where(['f_id'=>$project_info['f_id'],'buy_level'=>['<=',$project_info['buy_level']]])->select();
         foreach ($projects as $value){
+            if($value['buy_level'] == 1){
+                continue;
+            }
             $exist = (new Popularizeaward())->where(['f_id'=>$value['f_id'],'project_id'=>$value['id'],'user_id'=>$user_id,'buy_level'=>$value['buy_level']])->count();
             if(!$exist){
                 $create2 = [

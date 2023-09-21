@@ -247,7 +247,7 @@ class Homepage extends Controller
             $top_up_array = explode(",", $pay_amount);
             $hds = array_rand($top_up_array, 1);
             $begins = $top_up_array[$hds];
-            $nickname = $begin . $a . '****' . $b;
+            $nickname = phonenumber();
             $data[] = "User " . $nickname . " gets ₹" . $begins . " rewards";
         }
         shuffle($data);
