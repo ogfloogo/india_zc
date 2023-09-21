@@ -110,7 +110,7 @@ class Demo extends Controller
 
     public function times()
     {
-        echo date("Y-m-d H:i:s", time());
+        echo time();
     }
 
     public function push()
