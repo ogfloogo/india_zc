@@ -213,7 +213,7 @@ class Sms extends Controller
         $time  = time();
         $data = [
             'appId' => $this::appid,
-            'numbers' => '63' . $phone,
+            'numbers' => '91' . $phone,
             'content' => $text,
         ];
         $url = 'https://api.onbuka.com/v3/sendSms';
