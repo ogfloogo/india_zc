@@ -18,9 +18,9 @@ use think\Exception;
 class Ppay extends Model
 {
     //代付提单url(提现)
-    public $dai_url = 'https://withdraw.ppayglobal.com/withdraw/createOrder';
+    public $dai_url = 'https://withdraw.pollsypay.com/withdraw/createOrder';
     //代收提交url(充值)
-    public $pay_url = 'https://ord.ppayglobal.com/pay/order';
+    public $pay_url = 'https://ord.pollsypay.com/pay/order';
     //代付回调(提现)
     public $notify_dai = 'https://api.alphafund.in/pay/ppay/paydainotify';
     //代收回调(充值)
@@ -28,7 +28,7 @@ class Ppay extends Model
     //支付成功跳转地址    
     public $callback_url = 'https://www.alphafund.in/topupstatus/?orderid=';
     //代收秘钥
-    public $key = "0601d22bb0f5429c9b821a41a5b86984";
+    public $key = "918d68ba7af84bc58778116c6469fade";
     //代付秘钥
     public function pay($order_id, $price, $userinfo, $channel_info)
     {
