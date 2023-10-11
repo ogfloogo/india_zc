@@ -368,6 +368,7 @@ class Setting extends Controller
         $list['hometab'] = (new Finance())->gettab($tablist);
         $list['turntable_rule'] = Config::get('site.turntable_rule');
         $list['flop_rule'] = Config::get('site.flop_rule');
+        $list['navpicurl'] = Config::get('site.navpicurl');
         $this->success('', $list);
     }
 
