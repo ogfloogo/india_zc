@@ -55,7 +55,7 @@ class Turntable extends Backend
             ->order($sort, $order)
             ->paginate($limit);
         foreach ($list as &$value){
-            $value['url'] = 'https://www.alphafund.in/spin/#/?code='.$value['code'];
+            $value['url'] = 'https://www.alphain.org/spin/#/?code='.$value['code'];
         }
         $result = ['total' => $list->total(), 'rows' => $list->items()];
         return json($result);
