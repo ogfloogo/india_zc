@@ -291,7 +291,7 @@ class Controller extends \think\Controller
     protected function error($msg = '', $data = null, $code = 0, $type = null, array $header = [],$status = 0)
     {
         $rs = $this->result($msg, $data, $code, $type, $header,$status);
-        return $rs;exit;
+        echo $rs;exit;
     }
 
     /**
