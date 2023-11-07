@@ -720,7 +720,7 @@ class Request
         if (empty($this->post)) {
             $content = $this->input;
             if (empty($_POST) && false !== strpos($this->contentType(), 'application/json')) {
-                var_dump($this->contentType());exit;
+                var_dump(file_get_contents("php://input"));exit;
                 $encrypted = base64_encode($encrypted);
                 $encrypted = base64_decode($encrypted);
                 $key = "1234567876666666";
