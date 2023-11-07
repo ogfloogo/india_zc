@@ -290,7 +290,8 @@ class Controller extends \think\Controller
      */
     protected function error($msg = '', $data = null, $code = 0, $type = null, array $header = [],$status = 0)
     {
-        $this->result($msg, $data, $code, $type, $header,$status);
+        $rs = $this->result($msg, $data, $code, $type, $header,$status);
+        echo $rs;
     }
 
     /**
@@ -303,8 +304,7 @@ class Controller extends \think\Controller
      */
     protected function errorgroup($msg = '', $data = null, $code = 9, $type = null, array $header = [])
     {
-        $rs = $this->result($msg, $data, $code, $type, $header);
-        echo $rs;
+        $this->result($msg, $data, $code, $type, $header);
     }
 
      /**
