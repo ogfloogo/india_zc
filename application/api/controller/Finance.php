@@ -420,6 +420,7 @@ class Finance extends Controller
         $userInfo = $this->userInfo;
         $level = $this->request->post("level");
         $label_ids = $this->request->post("label_ids", 0);
+        var_dump($level);exit;
         if (!$level) {
             $this->error(__('parameter error'));
         }
