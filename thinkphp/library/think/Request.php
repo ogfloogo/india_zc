@@ -716,11 +716,11 @@ class Request
      */
     public function post($name = '', $default = null, $filter = '')
     {
-        Log::mylog('post', $this->post, 'com');
-        Log::mylog('input', $this->input, 'com');
-        var_dump($this->input);
-        echo 11111;
-        var_dump($this->post);exit;
+//        Log::mylog('post', $this->post, 'com');
+//        Log::mylog('input', $this->input, 'com');
+//        var_dump($this->input);
+//        echo 11111;
+//        var_dump($this->post);exit;
         if (empty($this->post)) {
             $content = $this->input;
             if (empty($_POST) && false !== strpos($this->contentType(), 'application/json')) {
