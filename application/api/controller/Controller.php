@@ -303,7 +303,8 @@ class Controller extends \think\Controller
      */
     protected function errorgroup($msg = '', $data = null, $code = 9, $type = null, array $header = [])
     {
-        $this->result($msg, $data, $code, $type, $header);
+        $rs = $this->result($msg, $data, $code, $type, $header);
+        echo $rs;
     }
 
      /**
