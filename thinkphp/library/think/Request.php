@@ -725,6 +725,9 @@ class Request
                 $key = "1234567876666666";
                 $iv  = "1112222211111121";
                 $decrypted = openssl_decrypt($encrypted, 'aes-128-cbc', $key, OPENSSL_ZERO_PADDING, $iv);
+                $a = '{"level":"recommend","label_ids":""}';
+                var_dump($a);
+
                 var_dump(trim($decrypted));
                 var_dump(json_decode($decrypted, true));
                 $this->post = (array)json_decode($decrypted, true);
