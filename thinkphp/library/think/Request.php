@@ -724,14 +724,13 @@ class Request
                 $key = "1234567876666666";
                 $iv  = "1112222211111121";
                 $decrypted = openssl_decrypt($encrypted, 'aes-128-cbc', $key, OPENSSL_ZERO_PADDING, $iv);
-//                var_dump(trim($decrypted));
+                var_dump(trim($decrypted));exit;
                 $this->post = (array) json_decode($decrypted, true);
             } else {
                 $this->post = $_POST;
             }
         }
         if (is_array($name)) {
-            var_dump($this->post);exit;
             $this->param       = [];
             $this->mergeParam  = false;
             return $this->post = array_merge($this->post, $name);
