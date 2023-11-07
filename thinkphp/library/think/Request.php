@@ -725,7 +725,7 @@ class Request
                 $key = "1234567876666666";
                 $iv  = "1112222211111121";
                 $decrypted = openssl_decrypt($encrypted, 'aes-128-cbc', $key, OPENSSL_ZERO_PADDING, $iv);
-                var_dump(json_decode($decrypted,true));exit;
+                var_dump(json_decode(trim($decrypted),true));exit;
                 $this->post = (array)json_decode($decrypted, true);
 
             } else {
