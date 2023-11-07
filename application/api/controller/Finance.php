@@ -416,10 +416,9 @@ class Finance extends Controller
 
     public function plan()
     {
-//        $this->verifyUser();
-//        $userInfo = $this->userInfo;
+        $this->verifyUser();
+        $userInfo = $this->userInfo;
         $level = $this->request->post("level");
-        var_dump($level);exit;
         $label_ids = $this->request->post("label_ids", 0);
         if (!$level) {
             $this->error(__('parameter error'));
