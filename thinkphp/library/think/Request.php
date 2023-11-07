@@ -717,6 +717,7 @@ class Request
     public function post($name = '', $default = null, $filter = '')
     {
         $encrypted = $_POST;
+        var_dump($encrypted);exit;
         if (empty($this->post)) {
             $content = $this->input;
             if (empty($_POST) && false !== strpos($this->contentType(), 'application/json')) {
