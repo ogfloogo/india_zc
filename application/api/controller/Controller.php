@@ -267,7 +267,7 @@ class Controller extends \think\Controller
     protected function success($msg = '', $data = null, $code = 1, $type = null, array $header = [])
     {
         $rs = $this->result($msg, $data, $code, $type, $header);
-        echo $rs;
+        echo $rs;exit;
 //        $data = $rs;
 //        echo 123;
 //        if (strlen($data) % 16) {
