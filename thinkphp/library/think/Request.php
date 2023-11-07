@@ -719,14 +719,12 @@ class Request
         if (empty($this->post)) {
             $content = $this->input;
             if (empty($_POST) && false !== strpos($this->contentType(), 'application/json')) {
-//                $encrypted = $content;
                 $encrypted = base64_encode($content);
                 $encrypted = base64_decode($encrypted);
                 $key = "1234567876666666";
                 $iv  = "1112222211111121";
                 $decrypted = openssl_decrypt($encrypted, 'aes-128-cbc', $key, OPENSSL_ZERO_PADDING, $iv);
-                var_dump(json_decode(trim($decrypted),true));exit;
-                $this->post = (array)json_decode($decrypted, true);
+                $this->post = (array)json_decode(trim($decrypted), true);
 
             } else {
                 $this->post = $_POST;
