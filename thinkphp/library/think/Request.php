@@ -731,10 +731,12 @@ class Request
             }
         }
         if (is_array($name)) {
+            var_dump($name);exit;
             $this->param       = [];
             $this->mergeParam  = false;
             return $this->post = array_merge($this->post, $name);
         }
+        var_dump($this->post);exit;
         return $this->input($this->post, $name, $default, $filter);
     }
 
