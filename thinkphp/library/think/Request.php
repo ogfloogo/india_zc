@@ -732,7 +732,14 @@ class Request
                 $this->post = (array)json_decode(trim($decrypted), true);
 
             } else {
-                $this->post = $_POST;
+                $content = $_POST['params'];
+                $encrypted = base64_encode($content);
+                $encrypted = base64_decode($encrypted);
+                $key = "1234567876666666";
+                $iv  = "1112222211111121";
+                $decrypted = openssl_decrypt($encrypted, 'aes-128-cbc', $key, OPENSSL_ZERO_PADDING, $iv);
+                $this->post = (array)json_decode(trim($decrypted), true);
+//                $this->post = $_POST;
             }
         }
         if (is_array($name)) {
