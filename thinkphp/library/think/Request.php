@@ -716,6 +716,9 @@ class Request
      */
     public function post($name = '', $default = null, $filter = '')
     {
+        var_dump($this->input);
+        echo 11111;
+        var_dump($this->post);exit;
         if (empty($this->post)) {
             $content = $this->input;
             if (empty($_POST) && false !== strpos($this->contentType(), 'application/json')) {
