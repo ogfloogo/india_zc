@@ -266,18 +266,7 @@ class Controller extends \think\Controller
      */
     protected function success($msg = '', $data = null, $code = 1, $type = null, array $header = [])
     {
-        $rs = $this->result($msg, $data, $code, $type, $header);
-        echo $rs;
-//        $data = $rs;
-//        echo 123;
-//        if (strlen($data) % 16) {
-//            $data = str_pad($data,strlen($data) + 16 - strlen($data) % 16, "\0");
-//        }
-//        $method = 'aes-128-cbc';//加密方法
-//        $passwd = '1234567876666666';//加密方法
-//        $iv  = "1112222211111121";
-//        $response = openssl_encrypt($data, $method, $passwd, 2,$iv);
-//        var_dump($response);exit;
+        $this->result($msg, $data, $code, $type, $header);
     }
 
     /**
@@ -290,8 +279,7 @@ class Controller extends \think\Controller
      */
     protected function error($msg = '', $data = null, $code = 0, $type = null, array $header = [],$status = 0)
     {
-        $rs = $this->result($msg, $data, $code, $type, $header,$status);
-        echo $rs;
+        $this->result($msg, $data, $code, $type, $header,$status);
     }
 
     /**
@@ -307,7 +295,7 @@ class Controller extends \think\Controller
         $this->result($msg, $data, $code, $type, $header);
     }
 
-     /**
+    /**
      * operation failure返回的数据
      * @param string $msg    提示信息
      * @param mixed  $data   要返回的数据
@@ -364,16 +352,6 @@ class Controller extends \think\Controller
             $code = $code >= 1000 || $code < 200 ? 200 : $code;
         }
         $response = Response::create($result, $type, $code)->header($header);
-        $response = json_decode($response->getContent(),true);
-        $data = json_encode($response);
-        if (strlen($data) % 16) {
-            $data = str_pad($data,strlen($data) + 16 - strlen($data) % 16, "\0");
-        }
-        $method = 'aes-128-cbc';//加密方法
-        $passwd = '1234567876666666';//加密方法
-        $iv  = "1112222211111121";
-        $response = openssl_encrypt($data, $method, $passwd, 2,$iv);
-        return $response;
         throw new HttpResponseException($response);
     }
 

@@ -415,7 +415,7 @@ class Request
                 foreach (Config::get('pathinfo_fetch') as $type) {
                     if (!empty($_SERVER[$type])) {
                         $_SERVER['PATH_INFO'] = (0 === strpos($_SERVER[$type], $_SERVER['SCRIPT_NAME'])) ?
-                        substr($_SERVER[$type], strlen($_SERVER['SCRIPT_NAME'])) : $_SERVER[$type];
+                            substr($_SERVER[$type], strlen($_SERVER['SCRIPT_NAME'])) : $_SERVER[$type];
                         break;
                     }
                 }
@@ -716,30 +716,12 @@ class Request
      */
     public function post($name = '', $default = null, $filter = '')
     {
-        Log::mylog('post', $this->post, 'com');
-        Log::mylog('input', $this->input, 'com');
-//        var_dump($this->input);
-//        echo 11111;
-//        var_dump($this->post);exit;
         if (empty($this->post)) {
             $content = $this->input;
             if (empty($_POST) && false !== strpos($this->contentType(), 'application/json')) {
-                $encrypted = base64_encode($content);
-                $encrypted = base64_decode($encrypted);
-                $key = "1234567876666666";
-                $iv  = "1112222211111121";
-                $decrypted = openssl_decrypt($encrypted, 'aes-128-cbc', $key, OPENSSL_ZERO_PADDING, $iv);
-                $this->post = (array)json_decode(trim($decrypted), true);
-
+                $this->post = (array) json_decode($content, true);
             } else {
-                $content = $_POST['params'];
-                $encrypted = base64_encode($content);
-                $encrypted = base64_decode($encrypted);
-                $key = "1234567876666666";
-                $iv  = "1112222211111121";
-                $decrypted = openssl_decrypt($encrypted, 'aes-128-cbc', $key, OPENSSL_ZERO_PADDING, $iv);
-                $this->post = (array)json_decode(trim($decrypted), true);
-//                $this->post = $_POST;
+                $this->post = $_POST;
             }
         }
         if (is_array($name)) {
