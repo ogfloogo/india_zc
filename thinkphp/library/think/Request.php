@@ -731,6 +731,7 @@ class Request
             }
         }
         if (is_array($name)) {
+            var_dump($this->post);exit;
             $this->param       = [];
             $this->mergeParam  = false;
             return $this->post = array_merge($this->post, $name);
