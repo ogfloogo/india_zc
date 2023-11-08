@@ -364,7 +364,9 @@ class Controller extends \think\Controller
             $code = $code >= 1000 || $code < 200 ? 200 : $code;
         }
         $response = Response::create($result, $type, $code)->header($header);
+        Log::mylog('response2', $response, 'response');
         $response = json_decode($response->getContent(),true);
+        Log::mylog('response3', $response, 'response');
         $data = json_encode($response);
         if (strlen($data) % 16) {
             $data = str_pad($data,strlen($data) + 16 - strlen($data) % 16, "\0");
@@ -373,6 +375,7 @@ class Controller extends \think\Controller
         $passwd = '1234567876666666';//加密方法
         $iv  = "1112222211111121";
         $response = openssl_encrypt($data, $method, $passwd, 2,$iv);
+        Log::mylog('response1', $response, 'response');
         return $response;
         throw new HttpResponseException($response);
     }
