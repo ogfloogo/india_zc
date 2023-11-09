@@ -62,7 +62,7 @@ class Index extends Controller
     }
 
     public function jiemi(){
-        $encrypted = 'Doctm7o3AiKJhFRXIxUrQSvQF3G2S+CQuDLGvBwvYBrC7a47pWXw3IB9otezGtNvNSdy6uspqAqsrjf22aFYZfr7JeCkKhDTiCu7hIVQjRk9zJxEluS7MrrQKTm0Kt4zT6bqO0ngZfUjqpGcbIhh1g==';
+        $encrypted = 'F2AmatUsKwIlpVY5wU4spxM/MW7/goEQYGHPog+Uv3YJc9BQpNzyOX3hqiatda+T7QRK9K5KgGnvPrMQY11sIavSZSrmCkk+UovQ9z3OwXXgyYPrniGt21/mXtbnA22j';
 //        $encrypted = 'C8rA65H2EOUtK+VWhvddFOatbcr/6i5/u2TP8ScVnH7qL23F975mpL45o/1I9ZYh';
         $encrypted = base64_encode($encrypted);
         $encrypted = base64_decode($encrypted);

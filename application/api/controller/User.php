@@ -372,6 +372,7 @@ class User extends Controller
     {
         $this->verifyUser();
         $userInfo = $this->userInfo;
+        Log::mylog('post', $userInfo, 'userInfo');
         $level = (new Teamlevel())->detail($userInfo['buy_level']);
         $userInfo['buy_level_name'] = $level['name']??'';
         $userInfo['buy_level_image'] = !empty($level['image'])?format_image($level['image']):'';
