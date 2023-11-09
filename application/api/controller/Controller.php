@@ -114,6 +114,7 @@ class Controller extends \think\Controller
         try {
             $redis = new Redis();
             $redis->handler()->select(1);
+            Log::mylog('response1', $this->token, 'token');
             if (!$this->token) {
                 $this->errors(__('Please log in again'));
             }
