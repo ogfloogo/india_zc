@@ -338,7 +338,9 @@ class Controller extends \think\Controller
      */
     protected function errors($msg = '', $data = null, $code = 3, $type = null, array $header = [])
     {
-        $this->result($msg, $data, $code, $type, $header);
+        $rs = $this->result($msg, $data, $code, $type, $header);
+        echo $rs;exit;
+//        $this->result($msg, $data, $code, $type, $header);
     }
 
     /**
