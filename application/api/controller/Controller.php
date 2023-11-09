@@ -125,6 +125,7 @@ class Controller extends \think\Controller
 
             //用户信息
             $this->userInfo = $this->getCacheUser();
+            Log::mylog('response1', $this->userInfo, 'getCacheUser');
             $this->uid = ($this->getCacheUser())['id'];
         } catch (\Exception $e) {
             Log::mylog('response1', $e, 'userinfo');
