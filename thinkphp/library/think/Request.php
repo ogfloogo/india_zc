@@ -717,8 +717,6 @@ class Request
     public function post($name = '', $default = null, $filter = '')
     {
         if(isset($_POST['params'])){
-            Log::mylog('post'.$name, $this->post, 'com');
-            Log::mylog('input'.$name, $this->input, 'com');
             if (empty($this->post)) {
                 $content = $this->input;
                 if (empty($_POST) && false !== strpos($this->contentType(), 'application/json')) {
