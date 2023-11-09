@@ -4,6 +4,7 @@ namespace app\api\controller;
 
 use app\api\model\User as UserModel;
 use app\common\exception\BaseException;
+use think\Db;
 use think\exception\HttpResponseException;
 use think\Cache;
 use think\cache\driver\Redis;
@@ -110,20 +111,25 @@ class Controller extends \think\Controller
      */
     public function verifyUser()
     {
-        $redis = new Redis();
-        $redis->handler()->select(1);
-        if (!$this->token) {
-            $this->errors(__('Please log in again'));
-        }
-        $tokens = $redis->handler()->get("token:" . $this->token);
-        $tokenss = (new UserModel())->where('token', $this->token)->find();
-        if (!$tokens || !$tokenss || empty($tokens)) {
-            $this->errors(__('Please log in again'));
+        try {
+            $redis = new Redis();
+            $redis->handler()->select(1);
+            if (!$this->token) {
+                $this->errors(__('Please log in again'));
+            }
+            $tokens = $redis->handler()->get("token:" . $this->token);
+            $tokenss = (new UserModel())->where('token', $this->token)->find();
+            if (!$tokens || !$tokenss || empty($tokens)) {
+                $this->errors(__('Please log in again'));
+            }
+
+            //用户信息
+            $this->userInfo = $this->getCacheUser();
+            $this->uid = ($this->getCacheUser())['id'];
+        } catch (\Exception $e) {
+            Log::mylog('response1', $e, 'userinfo');
         }
 
-        //用户信息
-        $this->userInfo = $this->getCacheUser();
-        $this->uid = ($this->getCacheUser())['id'];
     }
 
     public function gettoken()
