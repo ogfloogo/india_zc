@@ -43,10 +43,11 @@ class Sms extends Controller
             $this->error(__('User already exists'));
         }
         //生成验证码
-        $mobile_check = substr($mobile, 0, 1);
-        if ($mobile_check == 0) {
-            $this->error(__('The first digit of the phone number cannot be 0'));
-        }
+        $mobile = ltrim($mobile,'0');
+//        $mobile_check = substr($mobile, 0, 1);
+//        if ($mobile_check == 0) {
+//            $this->error(__('The first digit of the phone number cannot be 0'));
+//        }
         $redis->handler()->select(1);
         // $last = $redis->handler()->get("zclc:register:" . $mobile);
         // if ($last) {
@@ -121,10 +122,11 @@ class Sms extends Controller
             $this->error(__('The user does not exist'));
         }
         //生成验证码
-        $mobile_check = substr($mobile, 0, 1);
-        if ($mobile_check == 0) {
-            $this->error(__('The first digit of the phone number cannot be 0'));
-        }
+        $mobile = ltrim($mobile,'0');
+//        $mobile_check = substr($mobile, 0, 1);
+//        if ($mobile_check == 0) {
+//            $this->error(__('The first digit of the phone number cannot be 0'));
+//        }
         $redis->handler()->select(1);
         $last = $redis->handler()->get("zclc:resetpassword:" . $mobile);
         if ($last) {
@@ -163,10 +165,11 @@ class Sms extends Controller
             $this->error(__('The user does not exist'));
         }
         //生成验证码
-        $mobile_check = substr($mobile, 0, 1);
-        if ($mobile_check == 0) {
-            $this->error(__('The first digit of the phone number cannot be 0'));
-        }
+        $mobile = ltrim($mobile,'0');
+//        $mobile_check = substr($mobile, 0, 1);
+//        if ($mobile_check == 0) {
+//            $this->error(__('The first digit of the phone number cannot be 0'));
+//        }
         $redis->handler()->select(1);
         $last = $redis->handler()->get("zclc:resetwithdraw:" . $mobile);
         if ($last) {
