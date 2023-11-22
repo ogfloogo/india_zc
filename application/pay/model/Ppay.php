@@ -26,7 +26,7 @@ class Ppay extends Model
     //代收回调(充值)
     public $notify_pay = 'https://api.alphafund.in/pay/ppay/paynotify';
     //支付成功跳转地址    
-    public $callback_url = 'https://www.alphafund.in/topupstatus/?orderid=';
+    public $callback_url = 'https://www.alphafund.in/topupsuccess.html';
     //代收秘钥
     public $key = "918d68ba7af84bc58778116c6469fade";
     //代付秘钥

@@ -26,7 +26,7 @@ class Wowpay extends Model
     //代收回调(充值)
     public $notify_pay = 'https://api.alphafund.in/pay/wowpay/paynotify';
     //支付成功跳转地址    
-    public $callback_url = 'https://www.alphafund.in/topupstatus/?orderid=';
+    public $callback_url = 'https://www.alphafund.in/topupsuccess.html';
     //代收秘钥
     public $key = "DCD4BRTMEZCLHFH7FFSQDJHJQU0C6XTB";
     //代付秘钥
