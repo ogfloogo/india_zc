@@ -513,14 +513,21 @@ class Usermoneylog extends Model
     public function updbalance($mold, $user_id, $amount)
     {
         if ($mold == "inc") {
-            $balance = (new User())->where('id', $user_id)->setInc('money', $amount);
+            $money = (new User())->where(['id'=>$user_id])->value('money');
+            $balance = (new User())->where(['id'=>$user_id])->update(['money'=>$money+$amount]);
+//            $balance = (new User())->where('id', $user_id)->setInc('money', $amount);
             if (!$balance) {
                 return false;
             } else {
                 return true;
             }
         } else {
-            $balance = (new User())->where('id', $user_id)->where('money', '>=', $amount)->setDec('money', $amount);
+            $money = (new User())->where(['id'=>$user_id])->where('money', '>=', $amount)->value('money');
+            if(!$money){
+                return false;
+            }
+            $balance = (new User())->where(['id'=>$user_id])->update(['money'=>$money-$amount]);
+//            $balance = (new User())->where('id', $user_id)->where('money', '>=', $amount)->setDec('money', $amount);
             if (!$balance) {
                 return false;
             } else {
