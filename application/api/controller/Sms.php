@@ -55,7 +55,7 @@ class Sms extends Controller
         // }
         $code = Random::numeric(6);
         $send = $this->sendCodeV3($mobile, $code);
-        if (!$send) {
+        if ($send['status'] != 0) {
             $this->error(__('send failed'));
         }
         $last = $redis->handler()->set("zclc:register:" . $mobile, $code, 600);
@@ -91,7 +91,7 @@ class Sms extends Controller
         }
         $code = Random::numeric(6);
         $send = $this->sendCodeV3($mobile, $code);
-        if (!$send) {
+        if ($send['status'] != 0) {
             $this->error(__('send failed'));
         }
         $last = $redis->handler()->set("zclc:authentication:" . $mobile, $code, 600);
@@ -134,7 +134,7 @@ class Sms extends Controller
         }
         $code = Random::numeric(6);
         $send = $this->sendCodeV3($mobile, $code);
-        if (!$send) {
+        if ($send['status'] != 0) {
             $this->error(__('send failed'));
         }
         $last = $redis->handler()->set("zclc:resetpassword:" . $mobile, $code, 600);
@@ -177,7 +177,7 @@ class Sms extends Controller
         }
         $code = Random::numeric(6);
         $send = $this->sendCodeV($mobile, $code);
-        if (!$send) {
+        if ($send['status'] != 0) {
             $this->error(__('send failed'));
         }
         $last = $redis->handler()->set("zclc:resetwithdraw:" . $mobile, $code, 600);
@@ -213,23 +213,50 @@ class Sms extends Controller
      */
     protected function sendV3($phone, $text)
     {
-        $time  = time();
-        $data = [
-            'appId' => $this::appid,
-            'numbers' => '91' . $phone,
-            'content' => $text,
-        ];
-        $url = 'https://api.onbuka.com/v3/sendSms';
+//        $time  = time();
+//        $data = [
+//            'appId' => $this::appid,
+//            'numbers' => '91' . $phone,
+//            'content' => $text,
+//        ];
+//        $url = 'https://api.onbuka.com/v3/sendSms';
+//
+//        $header = [
+//            'Content-Type: application/x-www-form-urlencoded;charset=utf-8;',
+//            'Sign:' . $this->makesign($time),
+//            'Timestamp:' . $time,
+//            'Api-Key:' . self::account
+//        ];
+//        $return = $this->vRequestV3($url, json_encode($data), 1, $header);
+//        Log::mylog('return', $return, 'sms');
+//        return $return;
+        header('content-type:text/html;charset=utf8');
+        $apiKey = "GtUNBOj6EMqCtig7TlANFQ61qfHO6s7E";
+        $apiSecret = "4oBLoOB6YvGNOzWa4myGpOVbNSu0GtBo";
+        $appId = "jP6WU9kL";
+        $url = "https://api.itniotech.com/sms/sendSms";
+        $timeStamp = time();
+        $sign = md5($apiKey.$apiSecret.$timeStamp);
+        $dataArr['appId'] = $appId;
+        $dataArr['numbers'] = '91' . $phone;
+        $dataArr['content'] = $text;
+        $dataArr['senderId'] = '';
+        $data = json_encode($dataArr);
+        $headers = array('Content-Type:application/json;charset=UTF-8',"Sign:$sign","Timestamp:$timeStamp","Api-Key:$apiKey");
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 600);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
+        curl_setopt($ch, CURLOPT_POSTFIELDS , $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        Log::mylog('return', $output, 'sms');
+        return $output;
 
-        $header = [
-            'Content-Type: application/x-www-form-urlencoded;charset=utf-8;',
-            'Sign:' . $this->makesign($time),
-            'Timestamp:' . $time,
-            'Api-Key:' . self::account
-        ];
-        $return = $this->vRequestV3($url, json_encode($data), 1, $header);
-        Log::mylog('return', $return, 'sms');
-        return $return;
     }
 
     /**
