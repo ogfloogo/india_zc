@@ -263,11 +263,11 @@ class Homepage extends Controller
         //用户是否登录
         $finance_list = (new Finance())->hometop();
         if (!$finance_list) {
-            $this->success(__('The request is successful'), []);
+            $this->success(__('The request is successful1'), []);
         }
         $finance_project = (new Financeproject())->list($finance_list[0]['id'], ['id', 'name', 'image', 'status','f_id','fixed_amount']);
         if (!$finance_project) {
-            $this->success(__('The request is successful'), []);
+            $this->success(__('The request is successful2'), []);
         }
         foreach ($finance_project as $key => $value) {
             $finance_project[$key]['id'] = $value['f_id'];
@@ -279,7 +279,7 @@ class Homepage extends Controller
                 'partner' => format_image(Config::get('site.partner_icon')),
                 'experience' => $finance_project,
             ];
-            $this->success(__('The request is successful'), $res);
+            $this->success(__('The request is successful3'), $res);
         }
         $is_buy = (new Financeorder())->where(['popularize' => 2, 'user_id' => $checklogin['id'], 'is_robot' => 0])->find();
         if ($is_buy) {
@@ -289,6 +289,6 @@ class Homepage extends Controller
             'partner' => format_image(Config::get('site.partner_icon')),
             'experience' => $finance_project,
         ];
-        $this->success(__('The request is successful'), $res);
+        $this->success(__('The request is successful4'), $res);
     }
 }
