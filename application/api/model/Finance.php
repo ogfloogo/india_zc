@@ -112,7 +112,7 @@ class Finance extends Model
         $left = [];
         foreach($categorylist as $k=>$v){
             $reward = $this->detail(intval($k));
-            if($reward['popularize'] == 2){
+            if($reward['popularize'] == 2&&$reward['status'] == 1){
                 $left[] = $reward;
             }
         }
