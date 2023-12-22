@@ -71,7 +71,7 @@ class UserRecharge extends Backend
         if ($row['status'] != 0) {
             $this->error(__('状态不是待支付，无法操作'));
         }
-        (new Paycommon())->paynotify($row['order_id'], '', $row['price'], '手动通过');
+        (new Paycommon())->paynotify($row['order_id'], '手动通过', $row['price'], '手动通过');
         $this->success();
     }
 }
