@@ -3,6 +3,7 @@
 namespace app\admin\controller\finance;
 
 use app\common\controller\Backend;
+use app\pay\model\Paycommon;
 
 /**
  * 充值记录管理
@@ -53,5 +54,24 @@ class UserRecharge extends Backend
             ->paginate($limit);
         $result = ['total' => $list->total(), 'rows' => $list->items()];
         return json($result);
+    }
+
+    public function doPay()
+    {
+        $id = $this->request->param('id', 0);
+        $row = $this->model->get($id);
+        if (!$row) {
+            $this->error(__('No Results were found'));
+        }
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds) && !in_array($row[$this->dataLimitField], $adminIds)) {
+            $this->error(__('You have no permission'));
+        }
+
+        if ($row['status'] != 0) {
+            $this->error(__('状态不是待支付，无法操作'));
+        }
+        (new Paycommon())->paynotify($row['order_id'], '', $row['price'], '手动通过');
+        $this->success();
     }
 }
