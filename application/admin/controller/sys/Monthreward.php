@@ -3,6 +3,8 @@
 namespace app\admin\controller\sys;
 
 use app\common\controller\Backend;
+use think\Db;
+use think\exception\PDOException;
 
 /**
  * 每月邀请奖励配置
@@ -33,5 +35,36 @@ class Monthreward extends Backend
      * 需要将application/admin/library/traits/Backend.php中对应的方法复制到当前控制器,然后进行修改
      */
 
+    public function del($ids = null)
+    {
+        if (false === $this->request->isPost()) {
+            $this->error(__("Invalid parameters"));
+        }
+        $ids = $ids ?: $this->request->post("ids");
+        if (empty($ids)) {
+            $this->error(__('Parameter %s can not be empty', 'ids'));
+        }
+        $pk = $this->model->getPk();
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            $this->model->where($this->dataLimitField, 'in', $adminIds);
+        }
+        $list = $this->model->where($pk, 'in', $ids)->select();
 
+        $count = 0;
+        Db::startTrans();
+        try {
+            foreach ($list as $item) {
+                $count += $item->delete();
+            }
+            Db::commit();
+        } catch (PDOException|Exception $e) {
+            Db::rollback();
+            $this->error($e->getMessage());
+        }
+        if ($count) {
+            $this->success();
+        }
+        $this->error(__('No rows were deleted'));
+    }
 }
