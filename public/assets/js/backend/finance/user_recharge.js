@@ -7,8 +7,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 extend: {
                     index_url: 'finance/user_recharge/index' + location.search,
                     add_url: 'finance/user_recharge/add',
-                    edit_url: 'finance/user_recharge/edit',
-                    del_url: 'finance/user_recharge/del',
+                    // edit_url: 'finance/user_recharge/edit',
+                    // del_url: 'finance/user_recharge/del',
                     multi_url: 'finance/user_recharge/multi',
                     import_url: 'finance/user_recharge/import',
                     table: 'user_recharge',
