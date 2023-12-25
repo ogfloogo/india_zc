@@ -26,7 +26,7 @@ class Uploads extends Controller
             $this->error($e->getMessage());
         }
 
-        $this->success(__('Uploaded successful'), ['url' => $attachment->url, 'fullurl' => cdnurl($attachment->url, true)]);
+        $this->success2(__('Uploaded successful'), ['url' => $attachment->url, 'fullurl' => cdnurl($attachment->url, true)]);
     }
 
     /**

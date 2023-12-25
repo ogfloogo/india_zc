@@ -341,6 +341,34 @@ class Controller extends \think\Controller
 //        $this->result($msg, $data, $code, $type, $header);
     }
 
+    protected function success2($msg = '', $data = null, $code = 1, $type = null, array $header = [])
+    {
+        $this->result2($msg, $data, $code, $type, $header);
+    }
+
+    protected function result2($msg, $data = null, $code = 0, $type = null, array $header = [],$status=0)
+    {
+        $result = [
+            'code' => $code,
+            'msg'  => $msg,
+            'time' => Request::instance()->server('REQUEST_TIME'),
+            'data' => $data,
+            'status' => $status
+        ];
+        // 如果未设置类型则自动判断
+        $type = $type ? $type : ($this->request->param(config('var_jsonp_handler')) ? 'jsonp' : $this->responseType);
+
+        if (isset($header['statuscode'])) {
+            $code = $header['statuscode'];
+            unset($header['statuscode']);
+        } else {
+            //未设置状态码,根据code值判断
+            $code = $code >= 1000 || $code < 200 ? 200 : $code;
+        }
+        $response = Response::create($result, $type, $code)->header($header);
+        throw new HttpResponseException($response);
+    }
+
     /**
      * 返回封装后的 API 数据到客户端
      * @access protected
