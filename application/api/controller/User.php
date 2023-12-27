@@ -198,6 +198,9 @@ class User extends Controller
         }
 
         $mobile = ltrim($mobile,'0');
+        if(strlen($mobile) != 10){
+            $this->error(__('Mobile phone number error'));
+        }
         //密码是否一致
         if ($password != $re_password) {
             $this->error(__('Inconsistent passwords'));

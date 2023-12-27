@@ -62,7 +62,7 @@ class Index extends Controller
     }
 
     public function jiemi(){
-        $encrypted = 'Doctm7o3AiKJhFRXIxUrQabL1+9CerwQ+b73i5PrZPDb7hjXJRo+SDy400SLi1RLVgZz85ZWnkLbR5le3Kl04wWvH0VrCMsRfA4bX6HFkrE=';
+        $encrypted = 'Doctm7o3AiKJhFRXIxUrQTkibUcmqf14AnWPL5zO8dmme3L8ANUmCmZcrjkj01cUd3mzJaqlGXUi7OMaFHn8YAetrw1pQI5DbNezcOX22v9EV9B7e/wOKB7Yb0t2fFBTQ20MBaHp9zDlT41pHnY+IuSTOnAXoahI5C9Ug9otmOiIQk0nWJviZfbJHDhS1MzMg/wTnE84Mala5RoQVF6McA2fHwrZE1h+G5lnvqwWm1rxSDwr1mGt6AFiqbakES67Axx7w09pbU8JyvWn8Y7jIu9fH5zGU4joMO1QJLh7XqCvRsXGyFVhdVxvRqPo6+bbiudiBdzyHjeo0rskbCIZoA==';
 //        $encrypted = 'C8rA65H2EOUtK+VWhvddFOatbcr/6i5/u2TP8ScVnH7qL23F975mpL45o/1I9ZYh';
         $encrypted = base64_encode($encrypted);
         $encrypted = base64_decode($encrypted);
