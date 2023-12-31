@@ -172,11 +172,25 @@ class Xdpay extends Model
     {
         ksort($params);
         $signStr = '';
+//        foreach ($params as $key => $val) {
+//            if ($val != null) {
+//                $signStr .= $key . '=' . $val . '&';
+//            }
+//        }
+
         foreach ($params as $key => $val) {
-            if ($val != null) {
+            if ($val != null||is_bool($val)) {
+                if(is_bool($val)){
+                    if($val){
+                        $val = 'true';
+                    }else{
+                        $val = 'false';
+                    }
+                }
                 $signStr .= $key . '=' . $val . '&';
             }
         }
+
         $signStr .= 'key=' . $appsecret;
         // echo $signStr;
         return strtolower(md5($signStr));
