@@ -54,5 +54,6 @@ return [
     'app\admin\command\ForumCache',
     'app\api\command\Monthrank',
     'app\api\command\Historyrank',
-    'app\api\command\Refundmoney'
+    'app\api\command\Refundmoney',
+    'app\api\command\Statistics'
 ];

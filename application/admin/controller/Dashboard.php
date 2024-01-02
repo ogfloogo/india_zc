@@ -105,6 +105,12 @@ class Dashboard extends Backend
 
             'totaluserrecharge'         => count($total_recharge),
             'totaluserwithdraw'         => count($total_withdraw),
+
+            'total_order_money' =>  $todayReport['total_order_money'],
+            'release_money' => $todayReport['release_money'],
+            'release_interest' => $todayReport['release_interest'],
+            'release_capital' => $todayReport['release_capital'],
+            'user_balance' => $todayReport['user_balance'],
         ]);
 
         $this->assignconfig('chart_data', ['date' => $column, 'recharge' => $rechargeList, 'withdraw' => $withdrawList, 'user' => $loginList, 'reg' => $userList, 're_user' => $rechargeUserList, 'first' => $firstRechargeUserList]);
