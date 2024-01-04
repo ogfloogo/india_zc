@@ -165,6 +165,9 @@ class Finance extends Controller
         if (!$info) {
             $this->error(__('operation failure'));
         }
+        if($info['status'] != 1){
+            $this->error(__('operation failure'));
+        }
         //轮播图
         $rotation_images = explode(",", format_image($info['rotation_images']));
         $array_rotation_images = [];
