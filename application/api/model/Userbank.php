@@ -78,10 +78,10 @@ class Userbank extends Model
         if ($isset) {
             return ["code" => 3];
         }
-         $isset_ifsc = $this->where('ifsc', $post['ifsc'])->where("id", "neq", $post['id'])->find();
-         if ($isset_ifsc) {
-             return ["code" => 3];
-         }
+//         $isset_ifsc = $this->where('ifsc', $post['ifsc'])->where("id", "neq", $post['id'])->find();
+//         if ($isset_ifsc) {
+//             return ["code" => 3];
+//         }
         //卡号是否出过款 
         $iscash = (new Usercash())
             ->where('bankcard', $post['bankcard'])
