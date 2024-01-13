@@ -29,7 +29,7 @@ class Yesspay extends Model
     //支付成功跳转地址    
     public $callback_url = 'https://www.alphafund.in/topupsuccess.html';
     //代收秘钥
-    public $key = "L91UgSoh4DCze4Z";
+    public $key = "NKmZ8ou5uq8DeXy";
     //代付秘钥
     public function pay($order_id, $price, $userinfo, $channel_info)
     {
