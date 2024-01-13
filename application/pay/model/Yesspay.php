@@ -44,7 +44,7 @@ class Yesspay extends Model
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
         Log::mylog("提交参数", $param, "ysspay");
-        $return_json = Http::post($this->pay_url,json_encode($param));
+        $return_json = Http::post($this->pay_url,($param));
         Log::mylog("返回参数", $return_json, "ysspay");
         $return_array = json_decode($return_json, true);
         if ($return_array['code'] == 100) {
@@ -112,7 +112,7 @@ class Yesspay extends Model
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
         Log::mylog('提现提交参数', $param, 'yesspaydf');
-        $return_json = Http::post($this->dai_url,json_encode($param));
+        $return_json = Http::post($this->dai_url,($param));
         Log::mylog($return_json, 'yesspaydf', 'yesspaydf');
         return $return_json;
     }
