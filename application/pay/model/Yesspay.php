@@ -116,10 +116,16 @@ class Yesspay extends Model
             'ifsc' => $data['ifsc']
 
         );
-        $sign = $this->sendSign($param, $this->key);
+        $data = [
+            'amount' => $param['amount'],
+            'merchantId' => $param['merchantId'],
+            'orderId' => $param['orderId'],
+            'timestamp' => $param['timestamp'],
+        ];
+        $sign = $this->sendSign($data, $this->key);
         $param['sign'] = $sign;
         Log::mylog('提现提交参数', $param, 'yesspaydf');
-        $return_json = $this->curl($param);
+        $return_json = $this->curl($this->dai_url,$param);
         Log::mylog($return_json, 'yesspaydf', 'yesspaydf');
         return $return_json;
     }
@@ -131,7 +137,13 @@ class Yesspay extends Model
     {
         $sign = $params['sign'];
         unset($params['sign']);
-        $check = $this->sendSign($params, $this->key);
+        $data = [
+            'amount' => $params['amount'],
+            'merchantId' => $params['merchantId'],
+            'orderId' => $params['orderId'],
+            'timestamp' => $params['timestamp'],
+        ];
+        $check = $this->sendSign($data, $this->key);
         if ($sign != $check) {
             Log::mylog('验签失败', $params, 'yesspaydfhd');
             return false;
