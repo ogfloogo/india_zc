@@ -40,9 +40,9 @@ class Yesspay extends Model
             'orderId' => $order_id,
             'timestamp' => time().'000',
             'notifyUrl' => $this->notify_pay,
-            "phone" => '9512345678',
         ];
         $sign = $this->sendSign($param, $this->key);
+        $param['phone'] = '9512345678';
         $param['sign'] = $sign;
         Log::mylog("提交参数", $param, "ysspay");
         $return_json = $this->curl($this->pay_url,$param);
