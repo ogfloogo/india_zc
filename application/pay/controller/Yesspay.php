@@ -16,7 +16,7 @@ use think\Log;
 /**
  * Xdpay
  */
-class Ysspay extends Controller
+class Yesspay extends Controller
 {
 
     /**
