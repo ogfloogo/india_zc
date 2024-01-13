@@ -44,7 +44,7 @@ class Yesspay extends Model
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
         Log::mylog("提交参数", $param, "ysspay");
-        $return_json = $this->curl($param,$this->pay_url);
+        $return_json = $this->curl($this->pay_url,$param);
         Log::mylog("返回参数", $return_json, "ysspay");
         $return_array = json_decode($return_json, true);
         if ($return_array['code'] == 100) {
@@ -227,10 +227,10 @@ class Yesspay extends Model
     }
 
 
-    public function curl($postdata,$url)
+    public function curl($url,$postdata)
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url); //支付请求地址
+        curl_setopt($ch, CURLOPT_URL, $url); //支付请求地址
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -241,7 +241,7 @@ class Yesspay extends Model
             $ch,
             CURLOPT_HTTPHEADER,
             array(
-                'Content-Type: application/json; charset=utf-8',
+                'Content-Type: application/x-www-form-urlencoded',
             )
         );
         $response = curl_exec($ch);
