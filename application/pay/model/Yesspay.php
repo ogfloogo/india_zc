@@ -44,8 +44,8 @@ class Yesspay extends Model
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
         Log::mylog("提交参数", $param, "ysspay");
-        $header[] = "Content-Type: application/json;charset=utf-8";
-        $return_json = $this->http_Post($this->pay_url, $header,json_encode($param,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE));
+        $header[] = "Content-Type: application/json;";
+        $return_json = $this->http_Post($this->pay_url, $header,json_encode($param));
         Log::mylog("返回参数", $return_json, "ysspay");
         $return_array = json_decode($return_json, true);
         if ($return_array['code'] == 100) {
