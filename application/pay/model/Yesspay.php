@@ -71,7 +71,13 @@ class Yesspay extends Model
         if ($params['status'] == 1) {
             $sign = $params['sign'];
             unset($params['sign']);
-            $check = $this->sendSign($params, $this->key);
+            $data = [
+                'amount' => $params['amount'],
+                'merchantId' => $params['merchantId'],
+                'orderId' => $params['orderId'],
+                'timestamp' => $params['timestamp'],
+            ];
+            $check = $this->sendSign($data, $this->key);
             if ($sign != $check) {
                 Log::mylog('验签失败', $params, 'yesspayhd');
                 return false;
