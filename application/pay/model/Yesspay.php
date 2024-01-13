@@ -19,9 +19,9 @@ use think\Exception;
 class Yesspay extends Model
 {
     //代付提单url(提现)
-    public $dai_url = 'https://testapi.yess-pay.com/api/payment/createOrder';
+    public $dai_url = 'https://testapi.yess-pay.com/api/payout/createOrder';
     //代收提交url(充值)
-    public $pay_url = 'https://testapi.yess-pay.com/api/payout/createOrder';
+    public $pay_url = 'https://testapi.yess-pay.com/api/payment/createOrder';
     //代付回调(提现)
     public $notify_dai = 'https://api.alphafund.in/pay/yesspay/paydainotify';
     //代收回调(充值)
