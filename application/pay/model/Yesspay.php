@@ -108,7 +108,7 @@ class Yesspay extends Model
             'amount' => (int)$data['trueprice']*100,
             'merchantId' => $channel['merchantid'],
             'orderId' => $data['order_id'],
-            'timestamp' => microtime(true) * 1000,
+            'timestamp' => time().'000',
             'notifyUrl' => $this->notify_dai,
             'outType' => 'IMPS',
             'accountHolder' => $data['username'], //收款姓名
