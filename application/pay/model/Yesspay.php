@@ -44,7 +44,8 @@ class Yesspay extends Model
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
         Log::mylog("提交参数", $param, "ysspay");
-        $return_json = Http::post($this->pay_url,($param));
+        $header[] = "Content-Type: application/json;charset=utf-8";
+        $return_json = $this->http_Post($this->pay_url, $header,json_encode($param,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE));
         Log::mylog("返回参数", $return_json, "ysspay");
         $return_array = json_decode($return_json, true);
         if ($return_array['code'] == 100) {
@@ -112,7 +113,8 @@ class Yesspay extends Model
         $sign = $this->sendSign($param, $this->key);
         $param['sign'] = $sign;
         Log::mylog('提现提交参数', $param, 'yesspaydf');
-        $return_json = Http::post($this->dai_url,($param));
+        $header[] = "Content-Type: application/json;charset=utf-8";
+        $return_json = $this->http_Post($this->dai_url, $header,json_encode($param,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE));
         Log::mylog($return_json, 'yesspaydf', 'yesspaydf');
         return $return_json;
     }
@@ -311,5 +313,27 @@ class Yesspay extends Model
             (new Userrecharge())->where('order_id', $params['mchOrderNo'])->where('status', 0)->update($upd);
             Log::mylog('支付回调失败！', $params, 'ppayhd');
         }
+    }
+
+    function http_post($sUrl, $aHeader, $aData){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, $sUrl);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $aHeader);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POST, 1); // 发送一个常规的Post请求
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $aData); // Post提交的数据包
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30); // 设置超时限制防止死循环
+        curl_setopt($ch, CURLOPT_HEADER, 0); // 显示返回的Header区域内容
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 获取的信息以文件流的形式返回
+
+        //curl_setopt($ch, CURLOPT_HEADER, 1); //取得返回头信息
+
+        $sResult = curl_exec($ch);
+        if($sError=curl_error($ch)){
+            die($sError);
+        }
+        curl_close($ch);
+        return $sResult;
     }
 }
