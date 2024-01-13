@@ -37,7 +37,7 @@ class Yesspay extends Model
             'amount' => (int)$price*100,
             'merchantId' => $channel_info['merchantid'],
             'orderId' => $order_id,
-            'timestamp' => microtime(true) * 1000,
+            'timestamp' => time().'000',
             'notifyUrl' => $this->notify_pay,
             "phone" => '9512345678',
         ];
