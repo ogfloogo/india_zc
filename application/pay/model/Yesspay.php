@@ -241,7 +241,7 @@ class Yesspay extends Model
             $ch,
             CURLOPT_HTTPHEADER,
             array(
-                'Content-Type: application/x-www-form-urlencoded',
+                'Content-Type: application/json; charset=utf-8',
             )
         );
         $response = curl_exec($ch);
