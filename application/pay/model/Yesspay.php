@@ -236,7 +236,7 @@ class Yesspay extends Model
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postdata));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt(
             $ch,
