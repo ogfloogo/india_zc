@@ -192,8 +192,8 @@ class Yesspay extends Model
         foreach ($data as $key => $value) {
             $str = $str . $value;
         }
-        $str = $str . $salt;
-        return md5($str);
+        $str =md5( $str . $salt);
+        return ($str);
     }
 
     function httpPost($url, $data)
