@@ -34,8 +34,9 @@ class Yesspay extends Model
     public function pay($order_id, $price, $userinfo, $channel_info)
     {
         $param = [
-            'amount' => (int)$price*100,
+
             'merchantId' => $channel_info['merchantid'],
+            'amount' => (int)$price*100,
             'orderId' => $order_id,
             'timestamp' => time().'000',
             'notifyUrl' => $this->notify_pay,
