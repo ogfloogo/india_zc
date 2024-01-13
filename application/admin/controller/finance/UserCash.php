@@ -28,6 +28,7 @@ use app\pay\model\Wepay;
 use app\pay\model\Wowpay;
 use app\pay\model\Wowpays;
 use app\pay\model\Xdpay;
+use app\pay\model\Yesspay;
 use Exception;
 use think\Db;
 use think\Exception as ThinkException;
@@ -392,6 +393,17 @@ class UserCash extends Backend
                 $this->error($order['errMsg']);
             }
             // $params['order_no'] = $order['platOrderNum'] ?? '';
+            $params['channel'] = $withdrawChannel['name'];
+        }elseif($withdrawChannel['model'] == 'yesspay'){
+            $order = (new Yesspay())->withdraw($row,$withdrawChannel);
+            $order = json_decode($order, true);
+            if (empty($order)) {
+                $this->error("提现失败");
+            }
+            if ($order['code'] != 100) {
+                $this->error($order['msg']);
+            }
+             $params['order_no'] = $order['payOrderId'] ?? '';
             $params['channel'] = $withdrawChannel['name'];
         }
 
