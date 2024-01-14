@@ -52,7 +52,7 @@ class Financeorder extends Controller
         $post = $this->request->post();
         $project_id = $this->request->post("project_id"); //项目ID
         $amount = $this->request->post("amount"); //购买金额
-        if (!$amount || !$project_id) {
+        if (!$amount || !$project_id || $amount < 0) {
             $this->error(__('parameter error'));
         }
         //方案是否存在
