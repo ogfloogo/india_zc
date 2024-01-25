@@ -442,10 +442,10 @@ class Setting extends Controller
             }
             $value['userimage'] = format_image($value['userimage']);
             $buy_num = $redis->handler()->zScore("zclc:financeordernum", $value['id']);
-            if (!$buy_num) {
-                $buy_num = (new Buildcache())->buildFinance();
-                $buy_num = $redis->handler()->zScore("zclc:financeordernum", $value['id']);
-            }
+//            if (!$buy_num) {
+//                $buy_num = (new Buildcache())->buildFinance();
+//                $buy_num = $redis->handler()->zScore("zclc:financeordernum", $value['id']);
+//            }
             $value['buy_num'] = !$buy_num ? 0 : $buy_num; //支持人数
             if ($value['popularize'] == 1) {
                 $project_info = (new \app\api\model\Financeproject())->list($value['id']);
@@ -457,10 +457,10 @@ class Setting extends Controller
             }
             $value['image'] = format_image($value['image']);
             $already_buy = $redis->handler()->zScore("zclc:financeordermoney", $value['id']); //已认购
-            if (!$already_buy) {
-                $already_buy = (new Buildcache())->buildFinance();
-                $already_buy = $redis->handler()->zScore("zclc:financeordermoney", $value['id']); //已认购
-            }
+//            if (!$already_buy) {
+//                $already_buy = (new Buildcache())->buildFinance();
+//                $already_buy = $redis->handler()->zScore("zclc:financeordermoney", $value['id']); //已认购
+//            }
             $value['already_buy'] = !$already_buy ? 0 : $already_buy;
             if (!$value['money']) {
                 $value['already_rate'] = 0;

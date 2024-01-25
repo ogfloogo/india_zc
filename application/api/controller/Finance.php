@@ -185,10 +185,10 @@ class Finance extends Controller
         $info['rotation_images'] = $array_rotation_images;
         $info['userimage'] = format_image($info['userimage']);
         $already_buy = $redis->handler()->zScore("zclc:financeordermoney", $id);
-        if (!$already_buy) {
-            $already_buy = (new \app\api\model\Financeorder())->where(['f_id' => $id])->sum('amount');
-        }
-        $info['already_buy'] = $already_buy;
+//        if (!$already_buy) {
+//            $already_buy = (new \app\api\model\Financeorder())->where(['f_id' => $id])->sum('amount');
+//        }
+        $info['already_buy'] = !$already_buy ? 0 : $already_buy;
         $buy_num = $redis->handler()->zScore("zclc:financeordernum", $id);
         if (!$buy_num) {
             $buy_num = (new \app\api\model\Financeorder())->where(['f_id' => $id])->count();
