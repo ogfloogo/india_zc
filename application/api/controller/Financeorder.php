@@ -101,6 +101,25 @@ class Financeorder extends Controller
             }
         }
 
+        if($project_info['limit'] != 0){
+            //限购判断
+            if($copies > $project_info['limit']){
+                $this->error("केवल {$project_info['limit']}  प्रतियां खरीदी जा सकती हैं");
+            }
+            $total = (new ModelFinanceorder())->where(['user_id'=>$userinfo['id'],'project_id'=>$project_id,'is_robot'=>0])->sum('copies');
+            if($total + $copies > $project_info['limit']){
+                $this->error("केवल {$project_info['limit']}  प्रतियां खरीदी जा सकती हैं");
+            }
+        }
+        if($project_info['total'] != 0){
+            //总份数判断
+            $total = (new ModelFinanceorder())->where(['project_id'=>$project_id])->count();
+            if($total  >= $project_info['total']){
+                $this->error('बिक गया!');
+            }
+        }
+
+
         //方案是否在进行中
         if ($project_info['status'] == 0) {
             $this->error(__("Activity not started"));
