@@ -196,10 +196,23 @@ class Finance extends Controller
         $info['buy_num'] = $buy_num;
         $info['already_rate'] = round($info['already_buy'] / $info['money'] * 100, 0);
         $info['surplus_day'] = ceil(($info['endtime'] - time()) / (60 * 60 * 24));
-        $field2 = ['id', 'name', 'rate', 'type', 'day', 'fixed_amount', 'status', 'buy_level', 'capital', 'interest', 'image', 'popularize', 'content', 'is_new_hand'];
+        $field2 = ['id', 'name', 'rate', 'type', 'day', 'fixed_amount', 'status', 'buy_level', 'capital', 'interest', 'image', 'popularize', 'content', 'is_new_hand','total'];
         $project_info = (new \app\api\model\Financeproject())->lists($id, $this->uid, $field2);
         $online_project_info = [];
         foreach ($project_info as &$value) {
+
+
+            if($value['total'] != 0){
+                $total = (new \app\api\model\Financeorder())->where(['project_id'=>$value['id']])->count();
+                $remaining_copies = $value['total'] - $total;
+                if($remaining_copies <= 0){
+                    $value['name'] = $value['name']." [बिक गया]";
+                }else{
+                    $value['name'] = $value['name']." [{$remaining_copies} सर्विंग्स शेष]";
+                }
+            }
+
+
             $value['image'] = format_image($value['image']);
             $level = (new Teamlevel())->detail($value['buy_level']);
             $value['buy_level_name'] = $level['name'] ?? '';
@@ -438,10 +451,22 @@ class Finance extends Controller
             $where['label_ids'] = $label_array;
         }
         $redis = new Redis();
-        $field = ['id', 'name', 'rate', 'type', 'day', 'fixed_amount', 'status', 'buy_level', 'capital', 'interest', 'popularize', 'is_new_hand', 'label_ids', 'day_roi', 'f_id', 'recommend','sort'];
+        $field = ['id', 'name', 'rate', 'type', 'day', 'fixed_amount', 'status', 'buy_level', 'capital', 'interest', 'popularize', 'is_new_hand', 'label_ids', 'day_roi', 'f_id', 'recommend','sort','total'];
         $list = (new \app\api\model\Financeproject())->getPlanList($field, $where, $userInfo['id'],$userInfo['is_experience']);
         $newhand = [];
         foreach ($list as &$value) {
+
+            if($value['total'] != 0){
+                $total = (new \app\api\model\Financeorder())->where(['project_id'=>$value['id']])->count();
+                $remaining_copies = $value['total'] - $total;
+                if($remaining_copies <= 0){
+                    $value['name'] = $value['name']." [बिक गया]";
+                }else{
+                    $value['name'] = $value['name']." [{$remaining_copies} सर्विंग्स शेष]";
+                }
+            }
+
+
             $finance = (new \app\api\model\Finance())->detail($value['f_id'], ['name']);
             $value['finance_name'] = $finance['name'];
             //            $value['image'] = format_image($value['image']);
