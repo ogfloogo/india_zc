@@ -110,7 +110,7 @@ class User extends Backend
             //         $this->error('上级不能设置为自己团队的用户');
             //     }
             // }
-            if (!$params['status']) {
+            if ($params['status'] == 0||$params['status'] == 2) {
                 $token = $row['token'];
                 if ($token) {
                     (new ModelUser())->logout($token);
