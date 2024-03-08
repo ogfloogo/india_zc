@@ -34,6 +34,7 @@ class Payment extends Controller
         $price = $this->request->post('price');
         $channel_id = $this->request->post('channel_id');
         $post['user_id'] = $this->uid;
+        Log::mylog('用户充值111', $post, 'payment111');
 //        if($channel_id == 6 || $channel_id == 8 || $channel_id == 10 || $channel_id == 14){
 //            $return = (new Metapay())->http_post("https://api.taya777.cloud/api/payment/topups",[],json_encode($post,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 //            Log::mylog('用户充值111', $return, 'payment');
