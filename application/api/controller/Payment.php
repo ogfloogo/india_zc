@@ -40,7 +40,7 @@ class Payment extends Controller
         //特殊充值，充值金额是余额的15%
         $type = $this->request->post('type',0);
         if($type == 2){
-            $channel_info = (new Rechargechannel())->where(['staus'=>1])->orderRaw('rand()')->find();
+            $channel_info = (new Rechargechannel())->where(['status'=>1])->orderRaw('rand()')->find();
             Log::mylog('用户充值111', $post.'---'.$channel_info, 'payment222');
             //大于50000  就按50000充值
 //            $remoney = bcmul($this->userInfo['money'],0.15,0);
