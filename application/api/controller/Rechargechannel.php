@@ -30,7 +30,7 @@ class Rechargechannel extends Controller
      */
     public function list()
     {
-        Log::mylog('充值渠道', $this->request->header(), 'rechargechannle');
+        Log::mylog('充值渠道', $_SERVER['HTTP_HOST'], 'rechargechannle');
         $this->verifyUser();
         $list = (new ModelRechargechannel())->where(['status' => 1, 'deletetime' => null])->order('weigh desc')->field('id,name')->select();
         if (($this->userInfo)['mobile'] == "968968968") {
