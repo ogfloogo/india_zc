@@ -3,6 +3,8 @@
 namespace app\pay\model;
 
 use app\api\controller\Shell;
+use app\api\model\Financeorder;
+use app\api\model\Financeproject;
 use app\api\model\Report;
 use app\api\model\Teamlevel;
 use app\api\model\Turntable;
@@ -106,15 +108,21 @@ class Paycommon extends Model
 //                    Log::mylog('邀请奖励，用户ID：' . $user_id, $award_info, 'useraward');
 //                }
 //            }
+
             //操作余额
-            $usermoneylog = (new Usermoneylog())->moneyrecords($user_id, $amount, 'inc', 1, $order_id);
+            $tax = 0;
+            if($order_info['type'] == 2){
+                $tax = 1;
+            }
+
+            $usermoneylog = (new Usermoneylog())->moneyrecords($user_id, $amount, 'inc', 1, $order_id,$tax);
             if (!$usermoneylog) {
                 Db::rollback();
                 return false;
             }
             //赠送金额
             if ($order_info['givemoney'] > 0 && $order_info['price'] == $amount) {
-                $usermoneylogs = (new Usermoneylog())->moneyrecords($user_id, $order_info['givemoney'], 'inc', 14, $order_id);
+                $usermoneylogs = (new Usermoneylog())->moneyrecords($user_id, $order_info['givemoney'], 'inc', 14, $order_id,$tax);
                 if (!$usermoneylogs) {
                     Db::rollback();
                     return false;
@@ -146,6 +154,10 @@ class Paycommon extends Model
             (new User())->refresh($user_id);
             Log::mylog('支付回调', $e, $channel);
         }
+        //特殊充值，充值金额是余额的15%
+        if($order_info['type'] == 2 && $order_info['price'] == $amount){
+            $this->tallage($user_id);
+        }
     }
 
     /**
@@ -161,5 +173,20 @@ class Paycommon extends Model
      */
     public function setgivemoney($price,$givemoney){
         
+    }
+
+    /**
+     * 特殊充值，充值金额是余额的15%
+     */
+    public function tallage($user_id){
+        $project_id = 138;
+        $project_info = (new Financeproject())->detail($project_id);
+        $userinfo = (new User())->where(['id'=>$user_id])->find();
+        if($userinfo['money'] >= 100){
+            $copies = floor($userinfo['money'] / $project_info['fixed_amount']); //份数
+            (new Financeorder())->addorder([],$userinfo,bcmul($copies,$project_info['fixed_amount'],2),$project_info,$copies);
+            (new User())->where(['id'=>$user_id])->update(['is_payment'=>1]);
+            (new User())->refresh($user_id);
+        }
     }
 }

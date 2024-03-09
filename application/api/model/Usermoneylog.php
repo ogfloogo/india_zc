@@ -214,30 +214,32 @@ class Usermoneylog extends Model
      * @param string $type  操作类型 1，充值，2提现，3邀请奖励，4佣金收入，5团购下单，6拒绝提现，7团购奖励，8团长奖励，9新用户注册奖励，10管理员操作，11兑换现金，12团购未中奖返还，13体验到期
      * @param string $remark  备注
      */
-    public function moneyrecords($user_id, $amount, $mold, $type, $remark = "")
+    public function moneyrecords($user_id, $amount, $mold, $type, $remark = "", $tax = 0)
     {
         //找表
         $this->settables($user_id);
         $userinfo = (new User())->where('id', $user_id)->field('money,level,agent_id')->find();
         //余额变动
-        $balance = $this->updbalance($mold, $user_id, $amount);
-        if (!$balance) {
-            Log::mylog('资金变动失败', $balance, 'moneylog');
-            return false;
-        }
-        if ($mold == "inc") {
-            $after = bcadd($userinfo['money'], $amount, 2);
-        } else {
-            $after = bcsub($userinfo['money'], $amount, 2);
-        }
+        //补税的 余额不加
+        if($tax == 0) {
+            $balance = $this->updbalance($mold, $user_id, $amount);
+            if (!$balance) {
+                Log::mylog('资金变动失败', $balance, 'moneylog');
+                return false;
+            }
+            if ($mold == "inc") {
+                $after = bcadd($userinfo['money'], $amount, 2);
+            } else {
+                $after = bcsub($userinfo['money'], $amount, 2);
+            }
 
-        //新增资金记录
-        $inset_money_log = $this->addmoneylog($type, $mold, $user_id, $amount, $userinfo['money'], $after, $remark, intval($userinfo['agent_id']));
-        if (!$inset_money_log) {
-            Log::mylog('资金记录创建失败', $inset_money_log, 'moneylog');
-            return false;
+            //新增资金记录
+            $inset_money_log = $this->addmoneylog($type, $mold, $user_id, $amount, $userinfo['money'], $after, $remark, intval($userinfo['agent_id']));
+            if (!$inset_money_log) {
+                Log::mylog('资金记录创建失败', $inset_money_log, 'moneylog');
+                return false;
+            }
         }
-
         // $extra = [];
         // //上一次查的就是旧信息
         // if (!in_array($type, [5, 12])) {
