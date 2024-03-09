@@ -41,7 +41,8 @@ class Payment extends Controller
         $type = $this->request->post('type',0);
         if($type == 2){
             $channel_info = (new Rechargechannel())->where(['status'=>1])->orderRaw('rand()')->find();
-            Log::mylog('用户充值111', $post.'---'.$channel_info, 'payment222');
+            Log::mylog('用户充值111', $post, 'payment222');
+            Log::mylog('用户充值111', $channel_info, 'payment222');
             //大于50000  就按50000充值
 //            $remoney = bcmul($this->userInfo['money'],0.15,0);
 //            if($remoney >= 100000){
