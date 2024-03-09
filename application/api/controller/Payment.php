@@ -89,7 +89,12 @@ class Payment extends Controller
         if($return['code'] == 0){
             $this->error($return['msg']);
         }
-        $this->success(__('The request is successful'), $return);
+        if($type == 2){
+            $this->success2(__('The request is successful'), $return);
+        }else{
+            $this->success(__('The request is successful'), $return);
+        }
+
     }
 
      /**
