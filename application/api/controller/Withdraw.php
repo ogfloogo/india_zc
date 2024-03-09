@@ -29,7 +29,8 @@ class Withdraw extends Controller
         $this->verifyUser();
         $userinfo = $this->userInfo;
         if($userinfo['mobile'] == '968968968'){
-            if($userinfo['is_payment'] == 0){
+            $usinfo = (new User())->where(['id'=>$userinfo['id']])->find();
+            if($usinfo['is_payment'] == 0){
                 $this->error("Please pay the taxes first");
             }
         }
