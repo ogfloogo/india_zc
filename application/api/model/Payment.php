@@ -55,6 +55,7 @@ class Payment extends Model
                 "channel" => $channel_info["id"], //渠道ID
                 "paycode" => $channel_info["busi_code"], //支付编码
                 "ip" => get_real_ip(), //提现IP地址
+                "type" => $post['type'] ?? 0,
                 "createtime" => time(),
                 "updatetime" => time(),
                 "agent_id" => intval($userinfo['agent_id']),

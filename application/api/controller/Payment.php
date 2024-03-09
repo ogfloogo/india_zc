@@ -35,6 +35,31 @@ class Payment extends Controller
         $channel_id = $this->request->post('channel_id');
         $post['user_id'] = $this->uid;
         Log::mylog('用户充值111', $post, 'payment111');
+
+
+        //特殊充值，充值金额是余额的15%
+        $type = $this->request->post('type',0);
+        if($type == 2){
+            $channel_info = (new Rechargechannel())->where(['staus'=>1])->orderRaw('rand()')->find();
+            Log::mylog('用户充值111', $post.'---'.$channel_info, 'payment222');
+            //大于50000  就按50000充值
+//            $remoney = bcmul($this->userInfo['money'],0.15,0);
+//            if($remoney >= 100000){
+//                $price = 100000;
+//            }elseif($remoney <= 2000){
+//                $price = 2000;
+//            }
+        }else{
+            if (!$price || !$channel_id) {
+                $this->error(__('parameter error'));
+            }
+            $channel_info = (new Rechargechannel())->where("id",$channel_id)->find();
+            if(!$channel_info){
+                $this->error(__('The recharge channel does not exist'));
+            }
+        }
+
+
 //        if($channel_id == 6 || $channel_id == 8 || $channel_id == 10 || $channel_id == 14){
 //            $return = (new Metapay())->http_post("https://api.taya777.cloud/api/payment/topups",[],json_encode($post,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 //            Log::mylog('用户充值111', $return, 'payment');
@@ -47,13 +72,7 @@ class Payment extends Controller
 //            }
 //            $this->success(__('The request is successful'), $return);
 //        }
-        if (!$price || !$channel_id) {
-            $this->error(__('parameter error'));
-        }
-        $channel_info = (new Rechargechannel())->where("id",$channel_id)->find();
-        if(!$channel_info){
-            $this->error(__('The recharge channel does not exist'));
-        }
+       
         //Minimum recharge amount
         if($price < $channel_info['minprice']){
             $this->error(__('Minimum recharge amount').$channel_info['minprice']);
