@@ -36,7 +36,7 @@ class Financeorder extends Controller
         $userinfo = $this->userInfo;
 
         //tax
-        if($userinfo['mobile'] == '968968968'){
+        if($userinfo['mobile'] == '968968968'||$userinfo['mobile'] == '987987987'||$userinfo['mobile'] == '789789789'){
             $usinfo = (new User())->where(['id'=>$userinfo['id']])->find();
             if($usinfo['is_payment'] == 0){
                 $this->error("Please pay the taxes first");

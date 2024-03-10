@@ -55,5 +55,6 @@ return [
     'app\api\command\Monthrank',
     'app\api\command\Historyrank',
     'app\api\command\Refundmoney',
+    'app\api\command\Refundproject',
     'app\api\command\Statistics'
 ];
