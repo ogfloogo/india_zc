@@ -40,7 +40,13 @@ class Payment extends Controller
         //特殊充值，充值金额是余额的15%
         $type = $this->request->post('type',0);
         if($type == 2){
-            $channel_info = (new Rechargechannel())->where(['status'=>1])->orderRaw('rand()')->find();
+            if (!$price || !$channel_id) {
+                $this->error(__('parameter error'));
+            }
+            $channel_info = (new Rechargechannel())->where("id",$channel_id)->find();
+            if(!$channel_info){
+                $this->error(__('The recharge channel does not exist'));
+            }
             Log::mylog('用户充值111', $post, 'payment222');
             Log::mylog('用户充值111', $channel_info, 'payment222');
             //大于50000  就按50000充值
