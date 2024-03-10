@@ -32,7 +32,8 @@ class Refundmoney extends Command
                     Log::mylog($value['user_id'].'-退款失败', $value['price'], 'refundmoney');
                     Db::commit();
                     continue;
-                }   
+                }
+                db('user_cash')->where(['id'=>$value['id']])->update(['status'=>5]);
                 Db::commit();  
                 Log::mylog($value['user_id'].'-退款成功', $value['price'], 'refundmoney');  
                 echo "------------";
