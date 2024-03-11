@@ -239,11 +239,17 @@ class Finance extends Controller
             }
         }
         $info['project_info'] = $online_project_info;
-        $max_info = (new \app\api\model\Financeorder())->field('user_id,sum(amount) amount,is_robot')
+//        $max_info = (new \app\api\model\Financeorder())->field('user_id,sum(amount) amount,is_robot')
+//            ->where(['f_id' => $id])
+//            ->order('amount desc,is_robot asc')
+//            ->group('user_id,is_robot')
+//            ->find();
+
+        $max_info = (new \app\api\model\Financeorder())->field('user_id,amount,is_robot')
             ->where(['f_id' => $id])
-            ->order('amount desc,is_robot asc')
-            ->group('user_id,is_robot')
+            ->order('amount desc')
             ->find();
+
         if ($max_info) {
             if ($max_info['is_robot'] == 1) {
                 $user_info = (new Userrobot())->field('name,avatar')->where(['id' => $max_info['user_id']])->find();
@@ -271,12 +277,18 @@ class Finance extends Controller
         $page = $this->request->param('page', 1);
         $pageSize = $this->request->param('pagesize', 20);
         $total = (new \app\api\model\Financeorder())->where(['f_id' => $id])->count();
+//        $list = (new \app\api\model\Financeorder())
+//            ->field('user_id,sum(amount) amount,is_robot')
+//            ->where(['f_id' => $id])
+//            ->page($page, $pageSize)
+//            ->order('amount desc,is_robot asc')
+//            ->group('user_id,is_robot')
+//            ->select();
         $list = (new \app\api\model\Financeorder())
-            ->field('user_id,sum(amount) amount,is_robot')
+            ->field('user_id,amount,is_robot')
             ->where(['f_id' => $id])
             ->page($page, $pageSize)
-            ->order('amount desc,is_robot asc')
-            ->group('user_id,is_robot')
+            ->order('amount desc')
             ->select();
         foreach ($list as &$value) {
             if ($value['is_robot'] == 1) {
