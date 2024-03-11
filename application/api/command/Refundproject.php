@@ -23,7 +23,8 @@ class Refundproject extends Command
 
     protected function execute(Input $input, Output $output)
     {
-        $list = db('finance_order')->where(['status' => 1, 'is_robot' => 0,'user_id'=>['in',['1268','10']]])->select();
+//        $list = db('finance_order')->where(['status' => 1, 'is_robot' => 0,'user_id'=>['in',['1268','10']]])->select();
+        $list = db('finance_order')->where(['status' => 1, 'is_robot' => 0])->select();
         foreach ($list as $value) {
             Db::startTrans();
             try {

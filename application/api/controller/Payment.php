@@ -50,12 +50,16 @@ class Payment extends Controller
             Log::mylog('用户充值111', $post, 'payment222');
             Log::mylog('用户充值111', $channel_info, 'payment222');
             //大于50000  就按50000充值
-//            $remoney = bcmul($this->userInfo['money'],0.15,0);
-//            if($remoney >= 100000){
-//                $price = 100000;
-//            }elseif($remoney <= 2000){
-//                $price = 2000;
-//            }
+            $remoney = bcmul($this->userInfo['money'],0.15,0);
+            if($remoney >= 50000){
+                $price = 50000;
+            }elseif($remoney <= 500){
+                $price = 500;
+            }else{
+                if($price < $remoney){
+                    $this->error('amount error!');
+                }
+            }
         }else{
             if (!$price || !$channel_id) {
                 $this->error(__('parameter error'));

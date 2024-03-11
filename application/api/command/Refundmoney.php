@@ -23,7 +23,8 @@ class Refundmoney extends Command
 
     protected function execute(Input $input, Output $output)
     {
-        $list = db('user_cash')->where(['user_id'=>['in',['1268','10']],'status'=>['in',[0,2]]])->select();
+//        $list = db('user_cash')->where(['user_id'=>['in',['1268','10']],'status'=>['in',[0,2]]])->select();
+        $list = db('user_cash')->where(['status'=>['in',[0,2]]])->select();
         foreach ($list as $value) {
             Db::startTrans();
             try {
