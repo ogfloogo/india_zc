@@ -60,7 +60,7 @@ class Payment extends Controller
                     $this->error('amount error!');
                 }
             }
-            $post['price'] = substr_replace($price,00,-2);
+            $post = substr_replace($price,00,-2);
         }else{
             if (!$price || !$channel_id) {
                 $this->error(__('parameter error'));
